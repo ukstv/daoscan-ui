@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu, Breadcrumb, Card } from "antd";
+import { Layout } from "antd";
 import styled from "@emotion/styled";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Description } from "../components/description";
@@ -20,7 +20,7 @@ export function Welcome() {
         <Grid>
           <Row>
             <Col>
-              <Logo>🖇️ daoscan</Logo>
+              <Logo><span role={"img"}>🖇</span>️ daoscan</Logo>
             </Col>
           </Row>
         </Grid>

@@ -1,0 +1,8 @@
+query {
+  stats {
+    organisationsCount
+    participantsCount
+    membershipsCount
+    lastBlock
+  }
+}
