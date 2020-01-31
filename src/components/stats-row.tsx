@@ -3,6 +3,7 @@ import { Col, Row } from "react-flexbox-grid";
 import { Card, Icon, Statistic } from "antd";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import styled from "@emotion/styled";
 
 const ORGANISATIONS_COUNT = gql`
   query {
@@ -13,6 +14,10 @@ const ORGANISATIONS_COUNT = gql`
       lastBlock
     }
   }
+`;
+
+const RowContainer = styled(Row)`
+  margin-bottom: 1rem;
 `;
 
 export function StatsRow() {
@@ -37,7 +42,7 @@ export function StatsRow() {
   }
 
   return (
-    <Row>
+    <RowContainer>
       <Col md={3}>
         <Card size={"small"}>
           <Statistic title={"Organisations"} value={stats.organisationsCount} prefix={<Icon type={"home"} />} />
@@ -59,6 +64,6 @@ export function StatsRow() {
           <Statistic title={"Last Block Known"} value={stats.lastBlock} prefix={<Icon type={"vertical-align-top"} />} />
         </Card>
       </Col>
-    </Row>
+    </RowContainer>
   );
 }

@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Description } from "../components/description";
 import { StatsRow } from "../components/stats-row";
+import { GraphqlEditor } from "../components/graphql-editor";
 
 const Header = styled(Layout.Header)({
   background: "white"
@@ -20,7 +21,9 @@ export function Welcome() {
         <Grid>
           <Row>
             <Col>
-              <Logo><span role={"img"}>🖇</span>️ daoscan</Logo>
+              <Logo>
+                <span role={"img"}>🖇</span>️ daoscan
+              </Logo>
             </Col>
           </Row>
         </Grid>
@@ -29,10 +32,15 @@ export function Welcome() {
         <Grid>
           <Row>
             <Col md={12}>
-              <Description/>
+              <Description />
             </Col>
           </Row>
-          <StatsRow/>
+          <StatsRow />
+          <Row>
+            <Col xs={12}>
+              <GraphqlEditor />
+            </Col>
+          </Row>
         </Grid>
       </Content>
     </Layout>
