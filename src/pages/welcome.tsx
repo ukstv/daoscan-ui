@@ -5,6 +5,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import { Description } from "../components/description";
 import { StatsRow } from "../components/stats-row";
 import { GraphqlEditor } from "../components/graphql-editor";
+import { Socials } from "./socials";
 
 const Header = styled(Layout.Header)({
   background: "white"
@@ -20,10 +21,13 @@ export function Welcome() {
       <Header>
         <Grid>
           <Row>
-            <Col>
+            <Col sm={2}>
               <Logo>
                 <span role={"img"}>🖇</span>️ daoscan
               </Logo>
+            </Col>
+            <Col sm={2} smOffset={8}>
+              <Socials />
             </Col>
           </Row>
         </Grid>
