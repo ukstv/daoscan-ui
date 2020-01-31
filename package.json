@@ -8,19 +8,21 @@
     "@emotion/styled": "^10.0.27",
     "antd": "^3.26.6",
     "apollo-boost": "^0.4.7",
+    "cors": "^2.8.5",
     "emotion": "^10.0.27",
+    "express": "^4.17.1",
     "graphql": "^14.6.0",
+    "parcel-plugin-pwa-manifest": "^2.9.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-flexbox-grid": "^2.1.2",
-    "serverless-http": "^2.3.1",
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "serverless-http": "^2.3.1"
   },
   "scripts": {
     "start": "parcel src/index.html",
     "start:serverless": "serverless offline",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "deploy": "yarn build && sls deploy --stage prod"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +39,24 @@
       "last 1 safari version"
     ]
   },
+  "pwaManifest": {
+    "name": "Daoscan",
+    "shortName": "Daoscan",
+    "description": "Daoscan - DAO Indexer",
+    "startURL": ".",
+    "theme": "#ffffff",
+    "background": "#ffffff",
+    "generateIconOptions": {
+      "baseIcon": "src/static/logo.svg",
+      "sizes": [
+        48,
+        192,
+        384,
+        512
+      ],
+      "genFavicons": true
+    }
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -50,6 +70,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1",
     "serverless": "^1.62.0",
     "serverless-domain-manager": "^3.3.1",

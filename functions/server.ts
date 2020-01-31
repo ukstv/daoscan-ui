@@ -39,7 +39,7 @@ export const handle = serverless(app, {
     if (ct.indexOf(";") > 0) {
       ct = ct.substring(0, ct.indexOf(";"));
     }
-    let binary = !!String(ct).match(/.+\.(png|ico|jpg)/);
+    const binary = Boolean(String(ct).match(/.*(png|ico|jpg|webp)$/));
     console.log("binary: " + ct + " -> binary: " + binary);
     return binary;
   },

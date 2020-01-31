@@ -4,12 +4,12 @@ org: ukstv
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-#  domains:
-#    prod: "daoscan.cc"
-#  customDomain:
-#    domainName: ${self:custom.domains.${self:custom.stage}}
-#    stage: ${self:custom.stage}
-#    createRoute53Record: true
+  domains:
+    prod: "daoscan.net"
+  customDomain:
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    stage: ${self:custom.stage}
+    createRoute53Record: true
 
 provider:
   name: aws
@@ -23,7 +23,7 @@ package:
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
-#  - serverless-domain-manager
+  - serverless-domain-manager
 
 functions:
   server:
