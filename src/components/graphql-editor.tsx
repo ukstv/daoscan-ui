@@ -10,9 +10,8 @@ const EditorContainer = styled.div`
 
 const URL = "https://api.daoscan.net/graphql";
 
-const defaultQuery = `
-{
-  # Get all organisation by participant account, could be ens
+const defaultQuery = `{
+  # Get all organisation by participant account, could be ens address
   account(address: "0x70564145fa8e8a15348ef0190e6b7c07a2120462") {
     address # account address
     organisations {
@@ -23,43 +22,37 @@ const defaultQuery = `
       timestamp
       # Supply of shares
       totalSupply {
-        name
-        symbol
-        amount
-        decimals
+        ...TokenFragment
       }
       # Managed assets
       bank {
-        amount
-        name
-        symbol
-        decimals
+        ...TokenFragment
       }
       # All the participants
       participants {
         address
         # And how much of the shares they own
         shares {
-          name
-          symbol
-          decimals
-          amount
+          ...TokenFragment
         }
       }
       # Or just query for the single participant
       participant(address: "0x70564145fa8e8a15348ef0190e6b7c07a2120462") {
         address
         shares {
-          name
-          symbol
-          amount
-          decimals
+          ...TokenFragment
         }
       }
     }
   }
 }
-`;
+
+fragment TokenFragment on Token {
+  name
+  symbol
+  amount
+  decimals
+}`;
 
 function graphQLFetcher(graphQLParams: any) {
   return fetch(URL, {
