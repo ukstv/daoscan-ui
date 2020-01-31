@@ -6,7 +6,7 @@ import serverless from "serverless-http";
 
 const app = express();
 
-const buildDir = path.resolve(__dirname, "../build");
+const buildDir = path.resolve(__dirname, "../dist");
 const templatePath = path.resolve(buildDir, "index.html");
 const template = fs.readFileSync(templatePath, "utf8");
 

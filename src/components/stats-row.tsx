@@ -1,10 +1,19 @@
 import React from "react";
 import { Col, Row } from "react-flexbox-grid";
 import { Card, Icon, Statistic } from "antd";
-import { loader } from "graphql.macro";
 import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
-const ORGANISATIONS_COUNT = loader("./stats.gql");
+const ORGANISATIONS_COUNT = gql`
+  query {
+    stats {
+      organisationsCount
+      participantsCount
+      membershipsCount
+      lastBlock
+    }
+  }
+`;
 
 export function StatsRow() {
   const { error, data } = useQuery(ORGANISATIONS_COUNT);

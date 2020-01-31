@@ -8,8 +8,11 @@
 # testing
 /coverage
 
-# production
-/build
+build/
+dist/
+.build/
+.cache
+.serverless
 
 # misc
 .DS_Store

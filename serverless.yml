@@ -18,8 +18,7 @@ provider:
 
 package:
   include:
-    - build/**
-    - public/**
+    - dist/**
 
 plugins:
   - serverless-plugin-typescript
