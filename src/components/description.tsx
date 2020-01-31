@@ -9,5 +9,5 @@ const Element = styled.div({
 });
 
 export function Description() {
-  return <Element>Daoscan indexes Ethereum blockchain and provides <s>up to date</s> information on DAO activity (when Ethereum blockchain is fully traversed).</Element>;
+  return <Element>Daoscan indexes Ethereum blockchain and provides <s>up to date</s> information on DAO activity <small>(when Ethereum blockchain is fully traversed)</small>.</Element>;
 }
