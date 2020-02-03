@@ -21,7 +21,7 @@ const RowContainer = styled(Row)`
 `;
 
 export function StatsRow() {
-  const { error, data } = useQuery(ORGANISATIONS_COUNT);
+  const { error, data } = useQuery(ORGANISATIONS_COUNT, { pollInterval: 3000 });
 
   let stats = {
     organisationsCount: "~",
