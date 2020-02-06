@@ -1,2 +1,4 @@
 daoscan-ui:
   component: serverless-next.js
+  inputs:
+    domain: "daoscan.net"
