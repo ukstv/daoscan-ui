@@ -429,13 +429,14 @@ export const THEME = {
   cards: {
     primary: {
       padding: 3,
-      borderRadius: 4,
+      borderRadius: 2,
       boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)"
     },
     statistic: {
       padding: '1rem 1rem .5rem 1rem',
-      borderRadius: 4,
-      boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)"
+      borderRadius: 2,
+      border: '1px solid #e8e8e8',
+      boxShadow: "none"
     }
   }
 };

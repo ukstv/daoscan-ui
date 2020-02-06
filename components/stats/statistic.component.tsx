@@ -1,5 +1,4 @@
 import React from "react";
-import HomeIcon from "./home.icon.svg";
 import { StatNumber } from "./stat-number";
 import { Box, Card } from "@theme-ui/components";
 import styled from "@emotion/styled";

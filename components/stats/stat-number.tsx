@@ -10,7 +10,8 @@ interface Props {
 }
 
 const StatNumberE = styled.span`
-  font-size: 36px;
+  font-size: 24px;
+  vertical-align: top;
 `;
 
 export function StatNumber(props: Props) {

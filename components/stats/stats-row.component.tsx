@@ -6,7 +6,8 @@ import { Statistic } from "./statistic.component";
 import HomeIcon from "./home.icon.svg";
 import DeploymentIcon from "./deployment.icon.svg";
 import UserIcon from "./user.icon.svg";
-import BlockIcon from './vertical-align-top.icon.svg'
+import BlockIcon from "./vertical-align-top.icon.svg";
+import styled from "@emotion/styled";
 
 const ORGANISATIONS_COUNT = gql`
   query {
@@ -17,6 +18,10 @@ const ORGANISATIONS_COUNT = gql`
       lastBlock
     }
   }
+`;
+
+const StatsRowE = styled(Grid)`
+  margin-bottom: 1rem;
 `;
 
 export function StatsRow() {
@@ -41,7 +46,7 @@ export function StatsRow() {
   }
 
   return (
-    <Grid columns={[1, 2, 4]}>
+    <StatsRowE columns={[1, 2, 4]}>
       <Box>
         <Statistic name={"Organisations"} value={stats.organisationsCount} icon={<HomeIcon />} />
       </Box>
@@ -54,6 +59,6 @@ export function StatsRow() {
       <Box>
         <Statistic name={"Last Block Known"} value={stats.lastBlock} icon={<BlockIcon />} />
       </Box>
-    </Grid>
+    </StatsRowE>
   );
 }
