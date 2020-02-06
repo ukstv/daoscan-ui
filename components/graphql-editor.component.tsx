@@ -27,14 +27,14 @@ const defaultQuery = `{
       bank {
         ...TokenFragment
       }
-      # All the participants
-      participants {
-        address
-        # And how much of the shares they own
-        shares {
-          ...TokenFragment
-        }
-      }
+      # All the participants, might take long
+      # participants {
+      #   address
+      # And how much of the shares they own
+      #   shares {
+      #     ...TokenFragment
+      #   }
+      # }
       # Or just query for the single participant
       participant(address: "0x70564145fa8e8a15348ef0190e6b7c07a2120462") {
         address
