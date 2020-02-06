@@ -425,5 +425,17 @@ export const THEME = {
       width: 8,
       height: 8
     }
+  },
+  cards: {
+    primary: {
+      padding: 3,
+      borderRadius: 4,
+      boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)"
+    },
+    statistic: {
+      padding: '1rem 1rem .5rem 1rem',
+      borderRadius: 4,
+      boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)"
+    }
   }
 };
