@@ -1,0 +1,17 @@
+{
+  "name": "4b4di7i-dfltd8pj",
+  "hash": "pG3pfVu/l801fIvmSyh3zGkaS7asmsSQzUeqgp3Di0E=",
+  "description": "Default Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "/Users/ukstv/Documents/Pro/dao/daoscan-ui/.serverless_nextjs/default-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs10.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::301463046757:role/4b4di7i-otr4w9"
+  },
+  "arn": "arn:aws:lambda:us-east-1:301463046757:function:4b4di7i-dfltd8pj",
+  "region": "us-east-1"
+}

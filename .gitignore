@@ -12,8 +12,8 @@ build/
 dist/
 .build/
 .cache
-.serverless
 .next
+.serverless_nextjs
 
 # misc
 .DS_Store
