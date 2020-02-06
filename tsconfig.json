@@ -6,7 +6,7 @@
     "sourceMap": true,
     "target": "es6",
     "isolatedModules": true,
-    "module": "commonjs",
+    "module": "esnext",
     "outDir": ".build",
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -15,8 +15,23 @@
     "resolveJsonModule": true,
     "alwaysStrict": false,
     "noImplicitUseStrict": true,
-    "jsx": "react",
-    "lib": ["es6", "dom"],
-    "rootDir": "./"
-  }
+    "jsx": "preserve",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "rootDir": "./",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

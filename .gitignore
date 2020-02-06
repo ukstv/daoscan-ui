@@ -13,6 +13,7 @@ dist/
 .build/
 .cache
 .serverless
+.next
 
 # misc
 .DS_Store
@@ -20,7 +21,8 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
-src/react-app-env.d.ts
+src.old/react-app-env.d.ts
+next-env.d.ts
 
 npm-debug.log*
 yarn-debug.log*
