@@ -17,8 +17,6 @@ const defaultQuery = `{
       address
       platform
       name
-      txid
-      timestamp
       # Supply of shares
       totalSupply {
         ...TokenFragment
