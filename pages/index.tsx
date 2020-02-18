@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import React from "react";
 import { Layout } from "../components/layout.component";
-import { Header } from "../components/header.component";
 import { Box, Grid } from "@theme-ui/components";
 import styled from "@emotion/styled";
 import { GraphqlEditor } from "../components/graphql-editor.component";
@@ -18,7 +17,6 @@ const Description = styled.div({
 const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
   return (
     <Layout>
-      <Header />
       <Grid>
         <Box>
           <Description>
