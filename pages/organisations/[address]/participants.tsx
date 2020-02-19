@@ -1,13 +1,13 @@
 import React from "react";
-import { Box, Grid } from "@theme-ui/components";
-import { withApollo } from "../../lib/apollo";
 import { NextPage } from "next";
-import { useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
-import { OrganisationLayout } from "../../components/organisation-page/layout.component";
-import { ORGANISATION_QUERY, Queries } from "../../components/organisation-page/queries";
+import { useQuery } from "@apollo/react-hooks";
+import { ORGANISATION_QUERY, Queries } from "../../../components/organisation-page/queries";
+import { OrganisationLayout } from "../../../components/organisation-page/layout.component";
+import { Box, Grid } from "@theme-ui/components";
+import { withApollo } from "../../../lib/apollo";
 
-export const OrganisationPage: NextPage<{ address: string }> = props => {
+export const Participants: NextPage<{ address: string }> = props => {
   const router = useRouter();
   const address = (router.query.address as string | undefined) || props.address;
   const { error, data } = useQuery<Queries>(ORGANISATION_QUERY, {
@@ -23,7 +23,7 @@ export const OrganisationPage: NextPage<{ address: string }> = props => {
     return (
       <OrganisationLayout organisation={data.organisation}>
         <Grid>
-          <Box>Hello, {address}</Box>
+          <Box>Participants, {address}</Box>
         </Grid>
       </OrganisationLayout>
     );
@@ -32,9 +32,9 @@ export const OrganisationPage: NextPage<{ address: string }> = props => {
   }
 };
 
-OrganisationPage.getInitialProps = async context => {
+Participants.getInitialProps = async context => {
   const address = (context.query.address as string).toLowerCase();
   return { address };
 };
 
-export default withApollo(OrganisationPage);
+export default withApollo(Participants);

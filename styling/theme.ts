@@ -441,9 +441,16 @@ export const THEME = {
   },
   links: {
     pageNav: {
+      padding: '0.2rem 1rem',
+      color: 'text',
       fontWeight: 'normal',
+      '&:hover': {
+        color: 'text',
+        bg: 'light'
+      },
       '&.active': {
         fontWeight: 'bold',
+        color: 'black'
       }
     }
   }

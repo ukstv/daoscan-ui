@@ -13,7 +13,7 @@ export function ActiveLink(props: Props) {
   const router = useRouter();
   const activeClassName = props.activeClassName || "active";
 
-  let className = props.children.props.className || "";
+  let className = `${props.children.props.className} ${props.className}`;
   if (router.pathname === props.href) {
     className = `${className} ${activeClassName}`;
   }

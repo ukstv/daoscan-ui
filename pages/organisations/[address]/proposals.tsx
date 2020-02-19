@@ -2,8 +2,8 @@ import React from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
-import { ORGANISATION_QUERY, Queries } from "../queries";
-import { OrganisationLayout } from "../organisation-layout";
+import { ORGANISATION_QUERY, Queries } from "../../../components/organisation-page/queries";
+import { OrganisationLayout } from "../../../components/organisation-page/layout.component";
 import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../../lib/apollo";
 
