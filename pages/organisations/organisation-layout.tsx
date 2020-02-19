@@ -16,7 +16,11 @@ export function OrganisationLayout(props: React.PropsWithChildren<Props>) {
       <Grid>
         <Flex>
           <Box>
-            <Link href={`${props.organisation.address}/proposals`} passHref={true}>
+            <Link
+              href={`/organisations/[address]/proposals`}
+              as={`/organisations/${props.organisation.address}/proposals`}
+              passHref={true}
+            >
               <NavLink>Proposals</NavLink>
             </Link>
           </Box>
