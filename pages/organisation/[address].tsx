@@ -1,54 +1,23 @@
 import React from "react";
 import { Layout } from "../../components/layout.component";
-import { Box, Flex, Grid } from "@theme-ui/components";
-import styled from "@emotion/styled";
+import { Box, Flex, Grid, NavLink } from "@theme-ui/components";
 import { withApollo } from "../../lib/apollo";
 import { NextPage } from "next";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-import { OrganisationAvatar } from "../../components/organisation-avatar/organisation-avatar.component";
-import { PLATFORM } from "../../lib/platform";
-import { InlineStat } from "../../components/inline-stat.component";
-
-import UserIcon from "./user.svg";
-import ShareIcon from "./share.svg";
-import BankIcon from "./bank.svg";
-import BigNumber from "bignumber.js";
-
-const OrganisationTitle = styled.h2`
-  margin: 0;
-`;
-
-const OrganisationAddress = styled.h3`
-  margin: 0;
-  font-weight: normal;
-  font-size: 0.8rem;
-`;
-
-interface Value {
-  amount: string;
-  decimals: number;
-}
-
-interface BankItem {
-  value: Value;
-}
+import { OrganisationProps } from "./props";
+import { OrganisationHeader } from "./organisation-header";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface OrganisationQuery {
-  organisation: {
-    name: string;
-    platform: PLATFORM;
-    participants: {
-      totalCount: number;
-    };
-    totalSupply: Value;
-    bank: BankItem[];
-  };
+  organisation: OrganisationProps;
 }
 
 const ORGANISATION_QUERY = gql`
   query GetOrganisation($address: String!) {
     organisation(address: $address) {
+      address
       name
       platform
       participants {
@@ -68,22 +37,11 @@ const ORGANISATION_QUERY = gql`
   }
 `;
 
-function bankValue(bank: BankItem[]): number {
-  const usdValues = bank.map(b => Number(b.value.amount) / 10 ** b.value.decimals);
-  return usdValues.reduce((acc, v) => acc + v, 0);
-}
-
-function asNumber(value: Value) {
-  return new BigNumber(value.amount).div(10 ** value.decimals).toNumber();
-}
-
-const Stat = styled(InlineStat)`
-  margin: 10px;
-`;
-
 export const OrganisationPage: NextPage<{ address: string }> = props => {
+  const router = useRouter();
+  const address = (router.query.address as string | undefined) || props.address;
   const { error, data } = useQuery<OrganisationQuery>(ORGANISATION_QUERY, {
-    variables: { address: props.address }
+    variables: { address: address }
   });
 
   if (error) {
@@ -94,29 +52,20 @@ export const OrganisationPage: NextPage<{ address: string }> = props => {
   if (data) {
     return (
       <Layout>
+        <OrganisationHeader organisation={data.organisation} />
         <Grid>
           <Flex>
             <Box>
-              <OrganisationAvatar address={props.address} platform={data.organisation.platform} />
+              <Link href={`${address}/votes`} passHref={true}>
+                <NavLink>Votes</NavLink>
+              </Link>
             </Box>
-            <Box>
-              <OrganisationTitle>{data.organisation.name}</OrganisationTitle>
-              <OrganisationAddress>{props.address}</OrganisationAddress>
-            </Box>
-            <Box>
-              <Stat number={data.organisation.participants.totalCount} icon={<UserIcon />} title={"Participants"} />
-              <Stat number={asNumber(data.organisation.totalSupply)} precision={0} icon={<ShareIcon />} title={"Shares"} />
-              <Stat
-                number={bankValue(data.organisation.bank)}
-                numberPrefix={"$"}
-                precision={0}
-                icon={<BankIcon />}
-                title={"Bank Value"}
-              />
-            </Box>
+            <Box>Participants</Box>
           </Flex>
         </Grid>
-        <p>Organisation {props.address}</p>
+        <Grid>
+          <Box>Hello, {address}</Box>
+        </Grid>
       </Layout>
     );
   } else {
