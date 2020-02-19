@@ -438,5 +438,13 @@ export const THEME = {
       border: '1px solid #e8e8e8',
       boxShadow: "none"
     }
+  },
+  links: {
+    pageNav: {
+      fontWeight: 'normal',
+      '&.active': {
+        fontWeight: 'bold',
+      }
+    }
   }
 };

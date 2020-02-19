@@ -33,7 +33,6 @@ export const Proposals: NextPage<{ address: string }> = props => {
 };
 
 Proposals.getInitialProps = async context => {
-  console.log('proposals', context.query)
   const address = (context.query.address as string).toLowerCase();
   return { address };
 };
