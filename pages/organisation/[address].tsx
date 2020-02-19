@@ -1,14 +1,12 @@
 import React from "react";
-import { Layout } from "../../components/layout.component";
-import { Box, Flex, Grid, NavLink } from "@theme-ui/components";
+import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../lib/apollo";
 import { NextPage } from "next";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import { OrganisationProps } from "./props";
-import { OrganisationHeader } from "./organisation-header";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { OrganisationLayout } from "./organisation-layout";
 
 interface OrganisationQuery {
   organisation: OrganisationProps;
@@ -51,22 +49,11 @@ export const OrganisationPage: NextPage<{ address: string }> = props => {
 
   if (data) {
     return (
-      <Layout>
-        <OrganisationHeader organisation={data.organisation} />
-        <Grid>
-          <Flex>
-            <Box>
-              <Link href={`${address}/votes`} passHref={true}>
-                <NavLink>Votes</NavLink>
-              </Link>
-            </Box>
-            <Box>Participants</Box>
-          </Flex>
-        </Grid>
+      <OrganisationLayout organisation={data.organisation}>
         <Grid>
           <Box>Hello, {address}</Box>
         </Grid>
-      </Layout>
+      </OrganisationLayout>
     );
   } else {
     return <p>Loading...</p>;
