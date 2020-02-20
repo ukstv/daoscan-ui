@@ -26,11 +26,15 @@ const defaultQuery = `{
         ...TokenFragment
       }
       # All the participants, might take long
-      # participants {
-      #   address
-      # And how much of the shares they own
-      #   shares {
-      #     ...TokenFragment
+      # participants(first: 100) {
+      #   edges {
+      #     node {
+      #       address
+      #       # And how much of the shares they own
+      #       shares {
+      #         ...TokenFragment
+      #       }
+      #     }
       #   }
       # }
       # Or just query for the single participant
