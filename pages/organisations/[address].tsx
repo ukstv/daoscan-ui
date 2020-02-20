@@ -5,12 +5,12 @@ import { NextPage } from "next";
 import { useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
 import { OrganisationLayout } from "../../components/organisation-page/layout.component";
-import { ORGANISATION_QUERY, Queries } from "../../components/organisation-page/queries";
+import { ORGANISATION_QUERY, OrganisationQuery } from "../../components/organisation-page/queries";
 
 export const OrganisationPage: NextPage<{ address: string }> = props => {
   const router = useRouter();
   const address = (router.query.address as string | undefined) || props.address;
-  const { error, data } = useQuery<Queries>(ORGANISATION_QUERY, {
+  const { error, data } = useQuery<OrganisationQuery>(ORGANISATION_QUERY, {
     variables: { address: address }
   });
 

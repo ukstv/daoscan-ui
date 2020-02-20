@@ -2,15 +2,19 @@ import React from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
-import { ORGANISATION_QUERY, Queries } from "../../../components/organisation-page/queries";
+import {
+  ORGANISATION_PARTICIPANTS_QUERY,
+  OrganisationParticipantsQuery, Participant
+} from "../../../components/organisation-page/queries";
 import { OrganisationLayout } from "../../../components/organisation-page/layout.component";
 import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../../lib/apollo";
+import { ParticipantsTable } from "../../../components/organisation-page/participants-table.component";
 
 export const Participants: NextPage<{ address: string }> = props => {
   const router = useRouter();
   const address = (router.query.address as string | undefined) || props.address;
-  const { error, data } = useQuery<Queries>(ORGANISATION_QUERY, {
+  const { error, data } = useQuery<OrganisationParticipantsQuery>(ORGANISATION_PARTICIPANTS_QUERY, {
     variables: { address: address }
   });
 
@@ -20,10 +24,13 @@ export const Participants: NextPage<{ address: string }> = props => {
   }
 
   if (data) {
+    const participants = data.participants.participants.edges.map(edge => edge.node);
     return (
       <OrganisationLayout organisation={data.organisation}>
         <Grid>
-          <Box>Participants, {address}</Box>
+          <Box>
+            <ParticipantsTable participants={participants} />
+          </Box>
         </Grid>
       </OrganisationLayout>
     );

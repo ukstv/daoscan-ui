@@ -236,6 +236,24 @@ export const THEME = {
       border: 0,
       height: "1px",
       m: 3
+    },
+    table: {
+      width: "100%",
+      marginBottom: "1rem",
+      borderCollapse: "collapse"
+    },
+    "table thead th": {
+      verticalAlign: "bottom",
+      borderBottomColor: "gray.4",
+      borderBottomStyle: "solid",
+      borderBottomWidth: "1px"
+    },
+    td: {
+      padding: '0.75rem',
+      verticalAlign: 'top',
+      borderTopColor: 'gray.4',
+      borderTopStyle: "solid",
+      borderTopWidth: "1px"
     }
   },
   buttons: {
@@ -433,24 +451,24 @@ export const THEME = {
       boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)"
     },
     statistic: {
-      padding: '1rem 1rem .5rem 1rem',
+      padding: "1rem 1rem .5rem 1rem",
       borderRadius: 2,
-      border: '1px solid #e8e8e8',
+      border: "1px solid #e8e8e8",
       boxShadow: "none"
     }
   },
   links: {
     pageNav: {
-      padding: '0.2rem 1rem',
-      color: 'text',
-      fontWeight: 'normal',
-      '&:hover': {
-        color: 'text',
-        bg: 'light'
+      padding: "0.2rem 1rem",
+      color: "text",
+      fontWeight: "normal",
+      "&:hover": {
+        color: "text",
+        bg: "light"
       },
-      '&.active': {
-        fontWeight: 'bold',
-        color: 'black'
+      "&.active": {
+        fontWeight: "bold",
+        color: "black"
       }
     }
   }

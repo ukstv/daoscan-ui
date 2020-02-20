@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+.graphqlconfig
+schema.graphql
+
 # testing
 /coverage
 

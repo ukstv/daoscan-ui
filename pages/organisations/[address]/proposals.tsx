@@ -2,7 +2,7 @@ import React from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
-import { ORGANISATION_QUERY, Queries } from "../../../components/organisation-page/queries";
+import { ORGANISATION_QUERY, OrganisationQuery } from "../../../components/organisation-page/queries";
 import { OrganisationLayout } from "../../../components/organisation-page/layout.component";
 import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../../lib/apollo";
@@ -10,7 +10,7 @@ import { withApollo } from "../../../lib/apollo";
 export const Proposals: NextPage<{ address: string }> = props => {
   const router = useRouter();
   const address = (router.query.address as string | undefined) || props.address;
-  const { error, data } = useQuery<Queries>(ORGANISATION_QUERY, {
+  const { error, data } = useQuery<OrganisationQuery>(ORGANISATION_QUERY, {
     variables: { address: address }
   });
 
