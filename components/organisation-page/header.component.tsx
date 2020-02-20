@@ -32,10 +32,6 @@ function bankValue(bank: BankItem[]): number {
   return usdValues.reduce((acc, v) => acc + v, 0);
 }
 
-function asNumber(value: TokenValue) {
-  return new BigNumber(value.amount).div(10 ** value.decimals).toNumber();
-}
-
 export function OrganisationHeader(props: Props) {
   return (
     <Grid>
@@ -49,7 +45,7 @@ export function OrganisationHeader(props: Props) {
         </Box>
         <Box>
           <Stat number={props.organisation.participants.totalCount} icon={<UserIcon />} title={"Participants"} />
-          <Stat number={asNumber(props.organisation.totalSupply)} precision={0} icon={<ShareIcon />} title={"Shares"} />
+          <Stat number={TokenValue.toNumber(props.organisation.totalSupply)} precision={0} icon={<ShareIcon />} title={"Shares"} />
           <Stat
             number={bankValue(props.organisation.bank)}
             numberPrefix={"$"}

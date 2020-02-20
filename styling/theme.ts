@@ -442,6 +442,9 @@ export const THEME = {
     social: {
       width: 8,
       height: 8
+    },
+    avatar: {
+      borderRadius: '50%'
     }
   },
   cards: {
@@ -456,6 +459,22 @@ export const THEME = {
       border: "1px solid #e8e8e8",
       boxShadow: "none"
     }
+  },
+  variants: {
+    participant: {
+      avatar: {
+        width: '3.5rem',
+        height: '3.5rem',
+        marginRight: '1rem'
+      },
+      name: {
+        fontSize: 'larger',
+        fontWeight: 'bolder'
+      },
+      address: {
+        fontSize: 'smaller'
+      }
+    },
   },
   links: {
     pageNav: {
