@@ -2,15 +2,21 @@ import React from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
-import { ORGANISATION_QUERY, OrganisationQuery } from "../../../components/organisation-page/queries";
+import {
+  ORGANISATION_PROPOSALS_QUERY,
+  ORGANISATION_QUERY,
+  OrganisationProposalsQuery,
+  OrganisationQuery
+} from "../../../components/organisation-page/queries";
 import { OrganisationLayout } from "../../../components/organisation-page/layout.component";
 import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../../lib/apollo";
+import { ProposalsTable } from "../../../components/organisation-page/proposals-table.component";
 
 export const Proposals: NextPage<{ address: string }> = props => {
   const router = useRouter();
   const address = (router.query.address as string | undefined) || props.address;
-  const { error, data } = useQuery<OrganisationQuery>(ORGANISATION_QUERY, {
+  const { error, data } = useQuery<OrganisationProposalsQuery>(ORGANISATION_PROPOSALS_QUERY, {
     variables: { address: address }
   });
 
@@ -20,10 +26,12 @@ export const Proposals: NextPage<{ address: string }> = props => {
   }
 
   if (data) {
+    const proposals = data.proposals.proposals;
+    const platform = data.organisation.platform;
     return (
       <OrganisationLayout organisation={data.organisation}>
         <Grid>
-          <Box>Proposals, {address}</Box>
+          <ProposalsTable proposals={proposals} platform={platform} />
         </Grid>
       </OrganisationLayout>
     );

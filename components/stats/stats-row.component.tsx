@@ -3,10 +3,10 @@ import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import { Box, Grid } from "@theme-ui/components";
 import { Statistic } from "./statistic.component";
-import HomeIcon from "./home.icon.svg";
-import DeploymentIcon from "./deployment.icon.svg";
-import UserIcon from "./user.icon.svg";
-import BlockIcon from "./vertical-align-top.icon.svg";
+import HomeIcon from "../images/home.icon.svg";
+import DeploymentIcon from "../images/deployment.icon.svg";
+import UserIcon from "../jazzicon/user.icon.svg";
+import BlockIcon from "../jazzicon/vertical-align-top.icon.svg";
 import styled from "@emotion/styled";
 
 const ORGANISATIONS_COUNT = gql`

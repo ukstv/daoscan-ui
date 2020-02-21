@@ -1,12 +1,11 @@
 import React from "react";
 import { Box, Flex, Grid } from "@theme-ui/components";
 import { OrganisationAvatar } from "../organisation-avatar/organisation-avatar.component";
-import UserIcon from "./user.svg";
-import ShareIcon from "./share.svg";
-import BankIcon from "./bank.svg";
+import UserIcon from "../images/user.svg";
+import ShareIcon from "../images/share.svg";
+import BankIcon from "../images/bank.svg";
 import styled from "@emotion/styled";
 import { InlineStat } from "../inline-stat.component";
-import BigNumber from "bignumber.js";
 import { BankItem, OrganisationProps, TokenValue } from "./props";
 
 interface Props {

@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { getProfile, Profile } from "3box/lib/api";
 import { Jazzicon } from "../jazzicon/jazzicon.component";
 import { TokenValue } from "./props";
+import { ProfileAvatar } from "../profile-avatar.component";
 
 interface Props {
   participants: Participant[];
@@ -26,22 +27,6 @@ function UnknownParticipantProfile(props: { address: string }) {
       </Box>
     </Flex>
   );
-}
-
-function ProfileAvatar(props: { address: string; profile?: Profile }) {
-  if (
-    props.profile &&
-    props.profile.image &&
-    props.profile.image[0] &&
-    props.profile.image[0]["@type"] == "ImageObject" &&
-    props.profile.image[0].contentUrl &&
-    props.profile.image[0].contentUrl["/"]
-  ) {
-    const src = `https://ipfs.infura.io/ipfs/${props.profile.image[0].contentUrl["/"]}`;
-    return <Image src={src} variant={"avatar"} />;
-  } else {
-    return <Jazzicon address={props.address} />;
-  }
 }
 
 function KnownParticipantProfile(props: { profile: Profile; address: string }) {
