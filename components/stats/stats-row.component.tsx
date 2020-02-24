@@ -1,13 +1,12 @@
 import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-import { Box, Grid } from "@theme-ui/components";
+import { Grid } from "@theme-ui/components";
 import { Statistic } from "./statistic.component";
 import HomeIcon from "../images/home.icon.svg";
 import DeploymentIcon from "../images/deployment.icon.svg";
 import UserIcon from "../jazzicon/user.icon.svg";
 import BlockIcon from "../jazzicon/vertical-align-top.icon.svg";
-import styled from "@emotion/styled";
 
 const ORGANISATIONS_COUNT = gql`
   query {
@@ -18,10 +17,6 @@ const ORGANISATIONS_COUNT = gql`
       lastBlock
     }
   }
-`;
-
-const StatsRowE = styled(Grid)`
-  margin-bottom: 1rem;
 `;
 
 export function StatsRow() {
@@ -46,19 +41,11 @@ export function StatsRow() {
   }
 
   return (
-    <StatsRowE columns={[1, 2, 4]}>
-      <Box>
-        <Statistic name={"Organisations"} value={stats.organisationsCount} icon={<HomeIcon />} />
-      </Box>
-      <Box>
-        <Statistic name={"Memberships"} value={stats.membershipsCount} icon={<DeploymentIcon />} />
-      </Box>
-      <Box>
-        <Statistic name={"Participants"} value={stats.participantsCount} icon={<UserIcon />} />
-      </Box>
-      <Box>
-        <Statistic name={"Last Block Known"} value={stats.lastBlock} icon={<BlockIcon />} />
-      </Box>
-    </StatsRowE>
+    <Grid variant={"condensed"} columns={[2, 2, 4]}>
+      <Statistic name={"Organisations"} value={stats.organisationsCount} icon={<HomeIcon />} />
+      <Statistic name={"Memberships"} value={stats.membershipsCount} icon={<DeploymentIcon />} />
+      <Statistic name={"Participants"} value={stats.participantsCount} icon={<UserIcon />} />
+      <Statistic name={"Last Block Known"} value={stats.lastBlock} icon={<BlockIcon />} />
+    </Grid>
   );
 }

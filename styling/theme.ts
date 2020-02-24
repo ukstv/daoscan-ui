@@ -1,31 +1,57 @@
+const PALETTE = {
+  black: [
+    null,
+    "rgba(0,0,0,0.02)",
+    "rgba(0,0,0,.04)",
+    "rgba(0,0,0,.09)",
+    "rgba(0,0,0,.15)",
+    "rgba(0,0,0,.25)",
+    "rgba(0,0,0,.45)",
+    "rgba(0,0,0,.65)",
+    "rgba(0,0,0,.85)"
+  ],
+  white: [
+    null,
+    "rgba(255,255,255,0.04)",
+    "rgba(255,255,255,0.09)",
+    "rgba(255,255,255,0.15)",
+    "rgba(255,255,255,0.25)",
+    "rgba(255,255,255,0.45)",
+    "rgba(255,255,255,0.65)",
+    "rgba(255,255,255,0.85)",
+    "rgba(255,255,255,1)"
+  ],
+  gray: [null, "#f7fafc", "#edf2f7", "#e2e8f0", "#cbd5e0", "#a0aec0", "#718096", "#4a5568", "#2d3748", "#1a202c"],
+  red: [null, "#fff5f5", "#fed7d7", "#feb2b2", "#fc8181", "#f56565", "#e53e3e", "#c53030", "#9b2c2c", "#742a2a"],
+  orange: [null, "#fffaf0", "#feebc8", "#fbd38d", "#f6ad55", "#ed8936", "#dd6b20", "#c05621", "#9c4221", "#7b341e"],
+  yellow: [null, "#fffff0", "#fefcbf", "#faf089", "#f6e05e", "#ecc94b", "#d69e2e", "#b7791f", "#975a16", "#744210"],
+  green: [null, "#f0fff4", "#c6f6d5", "#9ae6b4", "#68d391", "#48bb78", "#38a169", "#2f855a", "#276749", "#22543d"],
+  teal: [null, "#e6fffa", "#b2f5ea", "#81e6d9", "#4fd1c5", "#38b2ac", "#319795", "#2c7a7b", "#285e61", "#234e52"],
+  blue: [null, "#ebf8ff", "#bee3f8", "#90cdf4", "#63b3ed", "#4299e1", "#3182ce", "#2b6cb0", "#2c5282", "#2a4365"],
+  indigo: [null, "#ebf4ff", "#c3dafe", "#a3bffa", "#7f9cf5", "#667eea", "#5a67d8", "#4c51bf", "#434190", "#3c366b"],
+  purple: [null, "#faf5ff", "#e9d8fd", "#d6bcfa", "#b794f4", "#9f7aea", "#805ad5", "#6b46c1", "#553c9a", "#44337a"],
+  pink: [null, "#fff5f7", "#fed7e2", "#fbb6ce", "#f687b3", "#ed64a6", "#d53f8c", "#b83280", "#97266d", "#702459"]
+};
+
+const BORDER_WIDTHS = {
+  "0": "0",
+  "1": "1px",
+  "2": "2px",
+  "4": "4px",
+  "8": "8px",
+  px: "1px"
+};
+
 export const THEME = {
-  borderWidths: {
-    "0": "0",
-    "2": "2px",
-    "4": "4px",
-    "8": "8px",
-    px: "1px"
-  },
+  borderWidths: BORDER_WIDTHS,
   breakpoints: ["640px", "768px", "1024px", "1280px"],
   colors: {
     transparent: "transparent",
-    black: "#000",
-    white: "#fff",
-    gray: [null, "#f7fafc", "#edf2f7", "#e2e8f0", "#cbd5e0", "#a0aec0", "#718096", "#4a5568", "#2d3748", "#1a202c"],
-    red: [null, "#fff5f5", "#fed7d7", "#feb2b2", "#fc8181", "#f56565", "#e53e3e", "#c53030", "#9b2c2c", "#742a2a"],
-    orange: [null, "#fffaf0", "#feebc8", "#fbd38d", "#f6ad55", "#ed8936", "#dd6b20", "#c05621", "#9c4221", "#7b341e"],
-    yellow: [null, "#fffff0", "#fefcbf", "#faf089", "#f6e05e", "#ecc94b", "#d69e2e", "#b7791f", "#975a16", "#744210"],
-    green: [null, "#f0fff4", "#c6f6d5", "#9ae6b4", "#68d391", "#48bb78", "#38a169", "#2f855a", "#276749", "#22543d"],
-    teal: [null, "#e6fffa", "#b2f5ea", "#81e6d9", "#4fd1c5", "#38b2ac", "#319795", "#2c7a7b", "#285e61", "#234e52"],
-    blue: [null, "#ebf8ff", "#bee3f8", "#90cdf4", "#63b3ed", "#4299e1", "#3182ce", "#2b6cb0", "#2c5282", "#2a4365"],
-    indigo: [null, "#ebf4ff", "#c3dafe", "#a3bffa", "#7f9cf5", "#667eea", "#5a67d8", "#4c51bf", "#434190", "#3c366b"],
-    purple: [null, "#faf5ff", "#e9d8fd", "#d6bcfa", "#b794f4", "#9f7aea", "#805ad5", "#6b46c1", "#553c9a", "#44337a"],
-    pink: [null, "#fff5f7", "#fed7e2", "#fbb6ce", "#f687b3", "#ed64a6", "#d53f8c", "#b83280", "#97266d", "#702459"],
-    grayDark: "#2d3748",
-    text: "#2d3748",
-    background: "#fff",
-    primary: "#2b6cb0",
-    primaryHover: "#2c5282",
+    ...PALETTE,
+    text: PALETTE.black[7],
+    background: PALETTE.gray[1],
+    primary: PALETTE.blue[6], // blue.6
+    primaryHover: PALETTE.blue[5], // blue.5 TODO Remove
     secondary: "#718096",
     muted: "#e2e8f0",
     success: "#9ae6b4",
@@ -38,13 +64,14 @@ export const THEME = {
   },
   fonts: {
     sans:
-      '-apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+      'Lato,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
     serif: 'Georgia, Cambria, "Times New Roman", Times, serif',
     mono: 'Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
     body:
-      '-apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-    heading: "inherit",
-    monospace: 'Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
+      'Lato,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+    heading: "Montserrat, Open Sans, sans-serif",
+    monospace: 'Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
+    logo: "Oswald, Open Sans, sans-serif"
   },
   fontSizes: ["0.875rem", "1rem", "1.25rem", "1.5rem", "1.875rem", "2.25rem", "3rem", "4rem", "4.5rem"],
   fontWeights: {
@@ -87,6 +114,7 @@ export const THEME = {
     "5": "1.25rem",
     "6": "1.5rem",
     "8": "2rem",
+    "9": "2.2rem",
     "10": "2.5rem",
     "12": "3rem",
     "16": "4rem",
@@ -137,6 +165,9 @@ export const THEME = {
     full: "100%",
     screenHeight: "100vh",
     screenWidth: "100vw"
+  },
+  borders: {
+    bevel: `${BORDER_WIDTHS["1"]} solid ${PALETTE.gray[4]}`
   },
   shadows: {
     default: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
@@ -249,9 +280,9 @@ export const THEME = {
       borderBottomWidth: "1px"
     },
     td: {
-      padding: '0.75rem',
-      verticalAlign: 'top',
-      borderTopColor: 'gray.4',
+      padding: "0.75rem",
+      verticalAlign: "top",
+      borderTopColor: "gray.4",
       borderTopStyle: "solid",
       borderTopWidth: "1px"
     }
@@ -431,11 +462,28 @@ export const THEME = {
   layout: {
     container: {
       width: "100%",
-      paddingRight: 15,
-      paddingLeft: 15,
+      paddingRight: 0,
+      paddingLeft: 0,
       marginRight: "auto",
       marginLeft: "auto",
       maxWidth: [540, 720, 960, 1140]
+    },
+    main: {
+      width: "100%",
+      paddingRight: 0,
+      paddingLeft: 0,
+      marginRight: "auto",
+      marginLeft: "auto",
+      borderLeft: "bevel",
+      borderRight: "bevel",
+      flex: "1 1 auto",
+      maxWidth: [null, null, 960, 1140],
+      // Hide border when width == viewport
+      // breakpoints: ["640px", "768px", "1024px", "1280px"],
+      "@media screen and (min-width: 640px) and (max-width: 960px), (min-width: 1024px) and (max-width: 1140px), (max-width: 640px)": {
+        borderLeft: "none",
+        borderRight: "none"
+      }
     }
   },
   images: {
@@ -444,7 +492,7 @@ export const THEME = {
       height: 8
     },
     avatar: {
-      borderRadius: '50%'
+      borderRadius: "50%"
     }
   },
   cards: {
@@ -452,34 +500,91 @@ export const THEME = {
       padding: 3,
       borderRadius: 2,
       boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)"
-    },
-    statistic: {
-      padding: "1rem 1rem .5rem 1rem",
-      borderRadius: 2,
-      border: "1px solid #e8e8e8",
-      boxShadow: "none"
+    }
+  },
+  grids: {
+    condensed: {
+      gridGap: 0
     }
   },
   variants: {
-    participant: {
-      avatar: {
-        width: '3.5rem',
-        height: '3.5rem',
-        marginRight: '1rem'
+    statistic: {
+      card: {
+        padding: 3,
+        textAlign: "center",
+        borderLeft: "bevel",
+        borderBottom: "bevel",
+        boxShadow: "none",
+        color: "heading",
+        "&:first-of-type": {
+          borderLeft: "none"
+        }
       },
-      name: {
-        fontSize: 'larger',
-        fontWeight: 'bolder'
+      title: {
+        color: "body",
+        marginBottom: 2
       },
-      address: {
-        fontSize: 'smaller'
+      icon: {
+        display: "inline",
+        "& svg": {
+          width: 9,
+          height: 9,
+          verticalAlign: "text-bottom",
+          marginRight: 1
+        }
       }
     },
+    layout: {
+      wrapper: {
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh"
+      },
+      header: {
+        borderBottom: "bevel",
+        padding: 2
+      },
+      main: {
+        width: "100%",
+        flex: "1 1 auto",
+        display: "flex",
+        flexDirection: "column"
+      },
+      footer: {
+        padding: 2,
+        borderTop: "bevel"
+      }
+    },
+    description: {
+      backgroundColor: "blue.7",
+      padding: 2,
+      color: "white.7",
+      borderBottom: "bevel"
+    },
+    participant: {
+      avatar: {
+        width: "3.5rem",
+        height: "3.5rem",
+        marginRight: "1rem"
+      },
+      name: {
+        fontSize: "larger",
+        fontWeight: "bolder"
+      },
+      address: {
+        fontSize: "smaller"
+      }
+    }
   },
   links: {
+    logo: {
+      fontFamily: "logo",
+      borderBottom: 0,
+      textTransform: "uppercase"
+    },
     pageNav: {
       padding: "0.2rem 1rem",
-      color: "text",
+      color: "white.6",
       fontWeight: "normal",
       "&:hover": {
         color: "text",

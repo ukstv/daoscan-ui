@@ -14,8 +14,8 @@ const LinkE = styled(Link)`
 
 const SocialImage = styled.span`
   & svg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     opacity: 0.4;
   }
   &:hover svg {

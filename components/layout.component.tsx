@@ -1,15 +1,25 @@
 import React from "react";
-import { Container, ThemeProvider } from "theme-ui";
+import { Box, Container, ThemeProvider } from "theme-ui";
 import { THEME } from "../styling/theme";
-import { Header } from "./header.component";
+import { TopBar } from "./top-bar.component";
+import { Socials } from "./socials/socials.component";
 
 export function Layout(props: React.PropsWithChildren<{}>) {
   return (
     <ThemeProvider theme={THEME}>
-      <Container>
-        <Header />
-        {props.children}
-      </Container>
+      <Box variant={"layout.wrapper"}>
+        <Box variant={"layout.header"}>
+          <TopBar />
+        </Box>
+        <Box variant={"layout.main"}>
+          <Container variant={"main"}>{props.children}</Container>
+        </Box>
+        <Box variant={"layout.footer"}>
+          <Container>
+            <Socials />
+          </Container>
+        </Box>
+      </Box>
     </ThemeProvider>
   );
 }

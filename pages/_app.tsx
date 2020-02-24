@@ -17,10 +17,22 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/images/logo192.png" />
         <link rel="icon" href="/images/logo192.png" sizes="192x192" />
         <link rel="icon" href="/images/logo512.png" sizes="512x512" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Lato:400,400i|Montserrat:500|Oswald&display=swap&subset=cyrillic,latin-ext"
+          rel="stylesheet"
+        />
         <title>DAO Indexer</title>
       </Head>
       <Component {...pageProps} />
       <script data-goatcounter="https://daoscan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+      <style global jsx>{`
+        html,
+        body,
+        body > div:first-child,
+        div#__next {
+          height: 100%;
+        }
+      `}</style>
     </>
   );
 }
