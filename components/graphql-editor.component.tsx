@@ -3,8 +3,9 @@ import GraphiQL from "graphiql";
 import styled from "@emotion/styled";
 
 const EditorContainer = styled.div`
-  height: 30rem;
+  min-height: 30rem;
   min-width: 100%;
+  flex: 1 1 auto;
 `;
 
 const URL = "https://api.daoscan.net/graphql";
