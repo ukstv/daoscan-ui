@@ -75,16 +75,15 @@ export const THEME = {
   },
   fontSizes: ["0.875rem", "1rem", "1.25rem", "1.5rem", "1.875rem", "2.25rem", "3rem", "4rem", "4.5rem"],
   fontWeights: {
-    hairline: "100",
-    thin: "200",
-    light: "300",
-    normal: "400",
+    thin: "100",
+    light: "200",
+    normal: "300",
     medium: "500",
     semibold: "600",
     bold: "700",
     extrabold: "800",
     black: "900",
-    body: "400",
+    body: "300",
     heading: "700"
   },
   letterSpacings: {
@@ -508,6 +507,12 @@ export const THEME = {
     }
   },
   variants: {
+    topBar: {
+      menu: {
+        flex: '1 1 auto',
+        textAlign: 'right'
+      }
+    },
     statistic: {
       card: {
         padding: 3,
@@ -542,7 +547,8 @@ export const THEME = {
       },
       header: {
         borderBottom: "bevel",
-        padding: 2
+        height: 12,
+        lineHeight: '3rem'
       },
       main: {
         width: "100%",
@@ -577,10 +583,25 @@ export const THEME = {
     }
   },
   links: {
-    logo: {
-      fontFamily: "logo",
-      borderBottom: 0,
-      textTransform: "uppercase"
+    topBar: {
+      logo: {
+        height: '3rem',
+        display: 'inline',
+        fontFamily: 'logo',
+        textTransform: 'uppercase',
+        '& svg': {
+          width: '3rem',
+          height: '3rem',
+          verticalAlign: 'bottom'
+        }
+      },
+      menu: {
+        fontFamily: "body",
+        borderBottom: 0,
+        // textTransform: "uppercase",
+        fontWeight: 'thin',
+        color: 'gray.7'
+      }
     },
     pageNav: {
       padding: "0.2rem 1rem",
