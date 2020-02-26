@@ -14,13 +14,12 @@ const OrganisationAvatarE = styled.div`
 `;
 
 const PlatformBadge = styled(Badge)`
-  position: absolute;
   display: block;
-  width: 2rem;
-  height: 2rem;
+  width: 50%;
+  height: 50%;
   z-index: 100;
-  margin-top: 2.2rem;
-  margin-left: -0.2rem;
+  margin-top: -70%;
+  margin-left: -10%;
   background-color: transparent;
   & img {
     width: 2rem;
@@ -42,11 +41,11 @@ export function OrganisationAvatar(props: { address: string; platform: PLATFORM 
   };
 
   return (
-    <OrganisationAvatarE>
+    <>
+      <Jazzicon address={props.address} />
       <PlatformBadge variant="circle">
         <img src={imageSource()} />
       </PlatformBadge>
-      <Jazzicon address={props.address} />
-    </OrganisationAvatarE>
+    </>
   );
 }

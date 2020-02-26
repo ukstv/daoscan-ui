@@ -16,13 +16,21 @@ export interface BankItem {
   value: TokenValue;
 }
 
-export interface OrganisationProps {
+export interface OrganisationWithBank {
+  bank: BankItem[];
+}
+
+export interface OrganisationWithTotalSupply {
+  totalSupply: TokenValue;
+}
+
+export interface OrganisationProps extends PureOrganisationProps, OrganisationWithBank, OrganisationWithTotalSupply {}
+
+export interface PureOrganisationProps {
   address: string;
   platform: PLATFORM;
   name: string;
   participants: {
     totalCount: number;
   };
-  totalSupply: TokenValue;
-  bank: BankItem[];
 }

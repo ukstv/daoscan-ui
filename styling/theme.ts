@@ -69,7 +69,7 @@ export const THEME = {
     mono: 'Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
     body:
       'Lato,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-    heading: "Montserrat, Open Sans, sans-serif",
+    heading: "Oswald, Open Sans, sans-serif",
     monospace: 'Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
     logo: "Oswald, Open Sans, sans-serif"
   },
@@ -212,6 +212,7 @@ export const THEME = {
       fontFamily: "heading",
       fontWeight: "heading",
       lineHeight: "heading",
+      color: "gray.8",
       m: 0,
       mb: 1,
       fontSize: 6,
@@ -476,6 +477,9 @@ export const THEME = {
       borderLeft: "bevel",
       borderRight: "bevel",
       flex: "1 1 auto",
+      display: "flex",
+      flexDirection: "column",
+      overflow: "hidden",
       maxWidth: [null, null, 960, 1140],
       // Hide border when width == viewport
       // breakpoints: ["640px", "768px", "1024px", "1280px"],
@@ -502,15 +506,43 @@ export const THEME = {
     }
   },
   grids: {
+    intraGrid: {
+      flex: "1 1 auto"
+    },
     condensed: {
       gridGap: 0
     }
   },
   variants: {
+    organisations: {
+      avatar: {
+        width: "3rem",
+        height: "3rem",
+        marginRight: 2
+      },
+      item: {
+        borderBottom: "bevel",
+        padding: 2
+      }
+    },
     topBar: {
       menu: {
-        flex: '1 1 auto',
-        textAlign: 'right'
+        flex: "1 1 auto",
+        textAlign: "right"
+      }
+    },
+    heading: {
+      borderBottom: "bevel",
+      paddingLeft: 2
+    },
+    intraGrid: {
+      flex: "1 1 auto",
+      content: {
+        flex: [2]
+      },
+      sidebar: {
+        flex: [1],
+        borderLeft: "bevel"
       }
     },
     statistic: {
@@ -548,7 +580,11 @@ export const THEME = {
       header: {
         borderBottom: "bevel",
         height: 12,
-        lineHeight: '3rem'
+        lineHeight: "3rem",
+        "@media screen and (min-width: 640px) and (max-width: 960px), (min-width: 1024px) and (max-width: 1140px), (max-width: 640px)": {
+          paddingLeft: 2,
+          paddingRight: 2
+        }
       },
       main: {
         width: "100%",
@@ -578,29 +614,29 @@ export const THEME = {
         fontWeight: "bolder"
       },
       address: {
-        fontSize: "smaller"
+        fontSize: "smaller",
+        fontFamily: "mono"
       }
     }
   },
   links: {
     topBar: {
       logo: {
-        height: '3rem',
-        display: 'inline',
-        fontFamily: 'logo',
-        textTransform: 'uppercase',
-        '& svg': {
-          width: '3rem',
-          height: '3rem',
-          verticalAlign: 'bottom'
+        height: "3rem",
+        display: "inline",
+        fontFamily: "logo",
+        textTransform: "uppercase",
+        "& svg": {
+          width: "3rem",
+          height: "3rem",
+          verticalAlign: "bottom"
         }
       },
       menu: {
         fontFamily: "body",
         borderBottom: 0,
-        // textTransform: "uppercase",
-        fontWeight: 'thin',
-        color: 'gray.7'
+        fontWeight: "thin",
+        color: "gray.7"
       }
     },
     pageNav: {

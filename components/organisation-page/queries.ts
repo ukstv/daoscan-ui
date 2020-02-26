@@ -1,5 +1,6 @@
-import { OrganisationProps } from "./props";
+import { BankItem, OrganisationProps, PureOrganisationProps } from "./props";
 import { gql } from "apollo-boost";
+import { PLATFORM } from "../../lib/platform";
 
 export interface OrganisationQuery {
   organisation: OrganisationProps;
@@ -117,7 +118,7 @@ export interface Proposal {
   index: number;
   proposer: string;
   payload: any;
-  status: PROPOSAL_STATUS
+  status: PROPOSAL_STATUS;
 }
 
 export interface OrganisationProposalsQuery {
@@ -138,4 +139,41 @@ export const ORGANISATION_PROPOSALS_QUERY = gql`
   }
   ${ORGANISATION_FRAGMENT}
   ${ORGANISATION_PROPOSALS_FRAGMENT}
+`;
+
+export interface OrganisationEdge {
+  node: PureOrganisationProps;
+  cursor: string;
+}
+
+export interface OrganisationsQuery {
+  organisations: {
+    edges: OrganisationEdge[];
+    pageInfo: {
+      endCursor: string;
+      startCursor: string;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+    };
+  };
+}
+
+export const ORGANISATIONS_QUERY = gql`
+  query GetOrganisations($first: Int, $after: String, $last: Int, $before: String) {
+    organisations(first: $first, after: $after, last: $last, before: $before) {
+      edges {
+        node {
+          ...OrganisationInfo
+        }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+  ${ORGANISATION_FRAGMENT}
 `;
