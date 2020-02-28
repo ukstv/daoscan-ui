@@ -11,6 +11,7 @@ export const ORGANISATION_FRAGMENT = gql`
     address
     name
     platform
+    createdAt
     participants {
       totalCount
     }

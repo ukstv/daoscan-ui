@@ -8,21 +8,26 @@ import { withApollo } from "../../lib/apollo";
 import { PureOrganisationProps } from "../../components/organisation-page/props";
 import { IntraGrid } from "../../styling/intra-grid";
 import { OrganisationAvatar } from "../../components/organisation-avatar/organisation-avatar.component";
+import { DateTime } from "luxon";
+
+function formatDate(s: string) {
+  const date = DateTime.fromISO(s);
+  return <span title={date.toISO()}>{date.toISODate()}</span>;
+}
 
 function OrganisationItem(props: { organisation: PureOrganisationProps }) {
   return (
     <Flex variant={"organisations.item"}>
-      <Box variant={'organisations.avatar'}>
+      <Box variant={"organisations.avatar"}>
         <OrganisationAvatar address={props.organisation.address} platform={props.organisation.platform} />
       </Box>
       <Box>
-        <Box variant={"participant.name"}>
-          {props.organisation.name}
-        </Box>
-        <Box variant={"participant.address"}>
-          {props.organisation.address}
-          Members: {props.organisation.participants.totalCount}
-        </Box>
+        <Box variant={"participant.name"}>{props.organisation.name}</Box>
+        <div>
+          <Box variant={"organisations.address"}>{props.organisation.address}</Box>
+          <Box variant={"organisations.inline"}>Members: {props.organisation.participants.totalCount}</Box>
+          <Box variant={"organisations.inline"}>Created: {formatDate(props.organisation.createdAt)}</Box>
+        </div>
       </Box>
     </Flex>
   );
@@ -43,6 +48,16 @@ function OrganisationIndexPage() {
       return <OrganisationItem organisation={e.node} key={`org-${e.node.address}-${i}`} />;
     });
 
+    const bottomPager = (
+      <Flex sx={{ borderBottom: "bevel" }}>
+        <Box sx={{ padding: 2 }}>Prev</Box>
+        <Box sx={{ flex: "1 1 auto", padding: 2, textAlign: "center", borderLeft: "bevel", borderRight: "bevel" }}>
+          Num
+        </Box>
+        <Box sx={{ padding: 2 }}>Next</Box>
+      </Flex>
+    );
+
     return (
       <Layout>
         <Grid>
@@ -50,7 +65,15 @@ function OrganisationIndexPage() {
             <Styled.h1>Organisations</Styled.h1>
           </Box>
         </Grid>
-        <IntraGrid content={organisationRows} sidebar={<></>} />
+        <IntraGrid
+          content={
+            <>
+              {organisationRows}
+              {bottomPager}
+            </>
+          }
+          sidebar={<></>}
+        />
       </Layout>
     );
   } else {

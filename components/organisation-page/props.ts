@@ -33,4 +33,5 @@ export interface PureOrganisationProps {
   participants: {
     totalCount: number;
   };
+  createdAt: string
 }

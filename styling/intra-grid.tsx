@@ -10,6 +10,6 @@ export const IntraGrid = (props: Props) => (
   // @ts-ignore
   <Flex columns={[1, "2fr 1fr"]} variant={'intraGrid'}>
     <Box variant={'intraGrid.content'}>{props.content}</Box>
-    <Box variant={"intraGrid.sidebar"}>{props.sidebar}SIDEBAR</Box>
+    {/*<Box variant={"intraGrid.sidebar"}>{props.sidebar}SIDEBAR</Box>*/}
   </Flex>
 );

@@ -511,6 +511,14 @@ export const THEME = {
     },
     condensed: {
       gridGap: 0
+    },
+    organisations: {
+      details: {
+        gridTemplateColumns: "20rem max-content max-content",
+        fontSize: "smaller",
+        gridAutoFlow: "column",
+        overflow: 'none'
+      }
     }
   },
   variants: {
@@ -518,11 +526,25 @@ export const THEME = {
       avatar: {
         width: "3rem",
         height: "3rem",
+        minWidth: "3rem",
         marginRight: 2
       },
       item: {
         borderBottom: "bevel",
         padding: 2
+      },
+      address: {
+        fontFamily: "mono",
+        wordWrap: 'unset',
+        fontSize: 'smaller',
+        paddingRight: 2,
+        float: 'left',
+      },
+      inline: {
+        whiteSpace: 'nowrap',
+        fontSize: 'smaller',
+        paddingRight: 2,
+        float: 'left',
       }
     },
     topBar: {
