@@ -35,7 +35,7 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
   );
 }
 
-function BottomPager(props: { pageInfo: PageInfo, totalCount: number }) {
+function BottomPager(props: { pageInfo: PageInfo; totalCount: number }) {
   const renderNextLink = () => {
     if (props.pageInfo.hasNextPage && props.pageInfo.endCursor) {
       return (
@@ -61,9 +61,9 @@ function BottomPager(props: { pageInfo: PageInfo, totalCount: number }) {
   };
 
   return (
-    <Flex sx={{ borderBottom: "bevel", marginBottom: "-1px" }}>
+    <Flex variant={"pager.bottom"}>
       <Box>{renderPreviousLink()}</Box>
-      <Box sx={{ flex: "1 1 auto", padding: 2, textAlign: "center", borderLeft: "bevel", borderRight: "bevel" }}>
+      <Box variant={"pager.pageNumber"}>
         {props.pageInfo.startIndex}&thinsp;&ndash;&thinsp;{props.pageInfo.endIndex} of {props.totalCount}
       </Box>
       <Box>{renderNextLink()}</Box>

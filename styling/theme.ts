@@ -639,6 +639,19 @@ export const THEME = {
         fontSize: "smaller",
         fontFamily: "mono"
       }
+    },
+    pager: {
+      bottom: {
+        borderBottom: "bevel",
+        marginBottom: "-1px"
+      },
+      pageNumber: {
+        flex: "1 1 auto",
+        padding: 2,
+        textAlign: "center",
+        borderLeft: "bevel",
+        borderRight: "bevel"
+      }
     }
   },
   links: {
@@ -680,25 +693,25 @@ export const THEME = {
         minWidth: "4rem",
         textAlign: "center",
         cursor: "pointer",
-        backgroundColor: 'green.7',
-        color: 'white',
-        '&:hover': {
-          backgroundColor: 'green.6',
-          color: 'white'
+        backgroundColor: "green.7",
+        color: "white",
+        "&:hover": {
+          backgroundColor: "green.6",
+          color: "white"
         },
-        '&:focus': {
-          backgroundColor: 'green.7',
-          color: 'white'
+        "&:focus": {
+          backgroundColor: "green.7",
+          color: "white"
         },
         disabled: {
           padding: 2,
           minWidth: "4rem",
           textAlign: "center",
-          color: 'white',
-          backgroundColor: 'muted',
-          '&:hover': {
-            color: 'white',
-            backgroundColor: 'muted',
+          color: "white",
+          backgroundColor: "muted",
+          "&:hover": {
+            color: "white",
+            backgroundColor: "muted"
           }
         }
       }
