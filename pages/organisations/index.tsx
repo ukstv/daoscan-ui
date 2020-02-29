@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "../../components/layout.component";
-import { Box, Flex, Grid, NavLink } from "@theme-ui/components";
+import { Box, Flex, Grid, NavLink, Link as TLink } from "@theme-ui/components";
 import { Styled } from "theme-ui";
 import { useQuery } from "@apollo/react-hooks";
 import { ORGANISATIONS_QUERY, OrganisationsQuery, PageInfo } from "../../components/organisation-page/queries";
@@ -40,11 +40,11 @@ function BottomPager(props: { pageInfo: PageInfo; totalCount: number }) {
     if (props.pageInfo.hasNextPage && props.pageInfo.endCursor) {
       return (
         <Link href={{ query: { after: props.pageInfo.endCursor } }} passHref={true}>
-          <NavLink variant={"pager.arrow"}>＞</NavLink>
+          <TLink variant={"pager.arrow"}>＞</TLink>
         </Link>
       );
     } else {
-      return <NavLink variant={"pager.arrow.disabled"}>＞</NavLink>;
+      return <TLink variant={"pager.arrow.disabled"}>＞</TLink>;
     }
   };
 
@@ -52,11 +52,11 @@ function BottomPager(props: { pageInfo: PageInfo; totalCount: number }) {
     if (props.pageInfo.hasPreviousPage && props.pageInfo.startCursor) {
       return (
         <Link href={{ query: { before: props.pageInfo.startCursor } }} passHref={true}>
-          <NavLink variant={"pager.arrow"}>＜</NavLink>
+          <TLink variant={"pager.arrow"}>＜</TLink>
         </Link>
       );
     } else {
-      return <NavLink variant={"pager.arrow.disabled"}>＜</NavLink>;
+      return <TLink variant={"pager.arrow.disabled"}>＜</TLink>;
     }
   };
 
@@ -102,7 +102,9 @@ const OrganisationIndexPage: NextPage<Props> = props => {
       <Layout>
         <Grid>
           <Box variant={"heading"}>
-            <Styled.h1>Organisations</Styled.h1>
+            <Styled.h1>
+              Organisations
+            </Styled.h1>
           </Box>
         </Grid>
         <IntraGrid

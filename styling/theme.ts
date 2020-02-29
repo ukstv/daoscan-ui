@@ -669,9 +669,9 @@ export const THEME = {
       },
       menu: {
         fontFamily: "body",
-        borderBottom: 0,
         fontWeight: "thin",
-        color: "gray.7"
+        color: "gray.7",
+        textDecoration: 'none'
       }
     },
     pageNav: {
@@ -689,6 +689,8 @@ export const THEME = {
     },
     pager: {
       arrow: {
+        display: 'block',
+        textDecoration: 'none',
         padding: 2,
         minWidth: "4rem",
         textAlign: "center",
@@ -709,6 +711,8 @@ export const THEME = {
           textAlign: "center",
           color: "white",
           backgroundColor: "muted",
+          display: 'block',
+          textDecoration: 'none',
           "&:hover": {
             color: "white",
             backgroundColor: "muted"
