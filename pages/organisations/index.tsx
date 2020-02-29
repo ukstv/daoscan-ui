@@ -1,14 +1,16 @@
 import React from "react";
 import { Layout } from "../../components/layout.component";
-import { Box, Flex, Grid } from "@theme-ui/components";
+import { Box, Flex, Grid, NavLink } from "@theme-ui/components";
 import { Styled } from "theme-ui";
 import { useQuery } from "@apollo/react-hooks";
-import { ORGANISATIONS_QUERY, OrganisationsQuery } from "../../components/organisation-page/queries";
+import { ORGANISATIONS_QUERY, OrganisationsQuery, PageInfo } from "../../components/organisation-page/queries";
 import { withApollo } from "../../lib/apollo";
 import { PureOrganisationProps } from "../../components/organisation-page/props";
 import { IntraGrid } from "../../styling/intra-grid";
 import { OrganisationAvatar } from "../../components/organisation-avatar/organisation-avatar.component";
 import { DateTime } from "luxon";
+import { NextPage } from "next";
+import Link from "next/link";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -33,9 +35,57 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
   );
 }
 
-function OrganisationIndexPage() {
+function BottomPager(props: { pageInfo: PageInfo, totalCount: number }) {
+  const renderNextLink = () => {
+    if (props.pageInfo.hasNextPage && props.pageInfo.endCursor) {
+      return (
+        <Link href={{ query: { after: props.pageInfo.endCursor } }} passHref={true}>
+          <NavLink variant={"pager.arrow"}>＞</NavLink>
+        </Link>
+      );
+    } else {
+      return <NavLink variant={"pager.arrow.disabled"}>＞</NavLink>;
+    }
+  };
+
+  const renderPreviousLink = () => {
+    if (props.pageInfo.hasPreviousPage && props.pageInfo.startCursor) {
+      return (
+        <Link href={{ query: { before: props.pageInfo.startCursor } }} passHref={true}>
+          <NavLink variant={"pager.arrow"}>＜</NavLink>
+        </Link>
+      );
+    } else {
+      return <NavLink variant={"pager.arrow.disabled"}>＜</NavLink>;
+    }
+  };
+
+  return (
+    <Flex sx={{ borderBottom: "bevel", marginBottom: "-1px" }}>
+      <Box>{renderPreviousLink()}</Box>
+      <Box sx={{ flex: "1 1 auto", padding: 2, textAlign: "center", borderLeft: "bevel", borderRight: "bevel" }}>
+        {props.pageInfo.startIndex}&thinsp;&ndash;&thinsp;{props.pageInfo.endIndex} of {props.totalCount}
+      </Box>
+      <Box>{renderNextLink()}</Box>
+    </Flex>
+  );
+}
+
+interface Props {
+  first: number | undefined;
+  after: string | undefined;
+  last: number | undefined;
+  before: string | undefined;
+}
+
+const OrganisationIndexPage: NextPage<Props> = props => {
   const { error, data } = useQuery<OrganisationsQuery>(ORGANISATIONS_QUERY, {
-    variables: {}
+    variables: {
+      first: props.first,
+      after: props.after,
+      last: props.last,
+      before: props.before
+    }
   });
 
   if (error) {
@@ -48,16 +98,6 @@ function OrganisationIndexPage() {
       return <OrganisationItem organisation={e.node} key={`org-${e.node.address}-${i}`} />;
     });
 
-    const bottomPager = (
-      <Flex sx={{ borderBottom: "bevel" }}>
-        <Box sx={{ padding: 2 }}>Prev</Box>
-        <Box sx={{ flex: "1 1 auto", padding: 2, textAlign: "center", borderLeft: "bevel", borderRight: "bevel" }}>
-          Num
-        </Box>
-        <Box sx={{ padding: 2 }}>Next</Box>
-      </Flex>
-    );
-
     return (
       <Layout>
         <Grid>
@@ -69,7 +109,7 @@ function OrganisationIndexPage() {
           content={
             <>
               {organisationRows}
-              {bottomPager}
+              <BottomPager pageInfo={data.organisations.pageInfo} totalCount={data.organisations.totalCount} />
             </>
           }
           sidebar={<></>}
@@ -79,6 +119,14 @@ function OrganisationIndexPage() {
   } else {
     return <p>Loading...</p>;
   }
-}
+};
+
+OrganisationIndexPage.getInitialProps = async context => {
+  const first = context.query.first ? Number(context.query.first) : undefined;
+  const after = context.query.after ? String(context.query.after) : undefined;
+  const last = context.query.last ? Number(context.query.last) : undefined;
+  const before = context.query.before ? String(context.query.before) : undefined;
+  return { first, after, last, before };
+};
 
 export default withApollo(OrganisationIndexPage);

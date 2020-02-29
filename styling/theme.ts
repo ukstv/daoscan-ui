@@ -517,7 +517,7 @@ export const THEME = {
         gridTemplateColumns: "20rem max-content max-content",
         fontSize: "smaller",
         gridAutoFlow: "column",
-        overflow: 'none'
+        overflow: "none"
       }
     }
   },
@@ -535,16 +535,16 @@ export const THEME = {
       },
       address: {
         fontFamily: "mono",
-        wordWrap: 'unset',
-        fontSize: 'smaller',
+        wordWrap: "unset",
+        fontSize: "smaller",
         paddingRight: 2,
-        float: 'left',
+        float: "left"
       },
       inline: {
-        whiteSpace: 'nowrap',
-        fontSize: 'smaller',
+        whiteSpace: "nowrap",
+        fontSize: "smaller",
         paddingRight: 2,
-        float: 'left',
+        float: "left"
       }
     },
     topBar: {
@@ -672,6 +672,35 @@ export const THEME = {
       "&.active": {
         fontWeight: "bold",
         color: "black"
+      }
+    },
+    pager: {
+      arrow: {
+        padding: 2,
+        minWidth: "4rem",
+        textAlign: "center",
+        cursor: "pointer",
+        backgroundColor: 'green.7',
+        color: 'white',
+        '&:hover': {
+          backgroundColor: 'green.6',
+          color: 'white'
+        },
+        '&:focus': {
+          backgroundColor: 'green.7',
+          color: 'white'
+        },
+        disabled: {
+          padding: 2,
+          minWidth: "4rem",
+          textAlign: "center",
+          color: 'white',
+          backgroundColor: 'muted',
+          '&:hover': {
+            color: 'white',
+            backgroundColor: 'muted',
+          }
+        }
       }
     }
   }

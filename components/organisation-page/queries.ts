@@ -147,21 +147,27 @@ export interface OrganisationEdge {
   cursor: string;
 }
 
+export interface PageInfo {
+  startIndex: number;
+  endIndex: number;
+  endCursor: string;
+  startCursor: string;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}
+
 export interface OrganisationsQuery {
   organisations: {
+    totalCount: number;
     edges: OrganisationEdge[];
-    pageInfo: {
-      endCursor: string;
-      startCursor: string;
-      hasNextPage: boolean;
-      hasPreviousPage: boolean;
-    };
+    pageInfo: PageInfo;
   };
 }
 
 export const ORGANISATIONS_QUERY = gql`
   query GetOrganisations($first: Int, $after: String, $last: Int, $before: String) {
     organisations(first: $first, after: $after, last: $last, before: $before) {
+      totalCount
       edges {
         node {
           ...OrganisationInfo
@@ -169,6 +175,8 @@ export const ORGANISATIONS_QUERY = gql`
         cursor
       }
       pageInfo {
+        startIndex
+        endIndex
         endCursor
         startCursor
         hasNextPage
