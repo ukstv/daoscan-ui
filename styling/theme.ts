@@ -50,8 +50,8 @@ export const THEME = {
     ...PALETTE,
     text: PALETTE.black[7],
     background: PALETTE.gray[1],
-    primary: PALETTE.blue[6], // blue.6
-    primaryHover: PALETTE.blue[5], // blue.5 TODO Remove
+    primary: PALETTE.blue[7], // blue.6
+    primaryHover: PALETTE.blue[6], // blue.5 TODO Remove
     secondary: "#718096",
     muted: "#e2e8f0",
     success: "#9ae6b4",
@@ -549,6 +549,36 @@ export const THEME = {
         fontSize: "smaller",
         paddingRight: 2,
         float: "left"
+      },
+      openAction: {
+        minWidth: "4rem",
+        marginTop: -2,
+        marginRight: -2,
+        marginBottom: -2,
+        borderLeft: 'bevel',
+        "&>a": {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minWidth: "4rem",
+          fontSize: "x-large",
+          textAlign: "center",
+          textDecoration: "none",
+          height: "100%",
+          padding: 2
+        },
+        '&>a>span': {
+          display: 'none'
+        },
+        '&:hover>a': {
+          backgroundColor: 'primaryHover',
+          color: 'white'
+        },
+        '&:hover>a>span': {
+          display: 'block',
+          fontSize:1,
+          marginRight: 1,
+        }
       }
     },
     topBar: {

@@ -11,6 +11,8 @@ import { OrganisationAvatar } from "../../components/organisation-avatar/organis
 import { DateTime } from "luxon";
 import { NextPage } from "next";
 import Link from "next/link";
+import { PLATFORM } from "../../lib/platform";
+import { UnreachableCaseError } from "../../lib/unreachable-case.error";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -18,18 +20,34 @@ function formatDate(s: string) {
 }
 
 function OrganisationItem(props: { organisation: PureOrganisationProps }) {
+  const organisationLink = () => {
+    switch (props.organisation.platform) {
+      case PLATFORM.MOLOCH_1:
+        return `//pokemol.com/dao/${props.organisation.address}`;
+      case PLATFORM.ARAGON:
+        return `https://mainnet.aragon.org/#/${props.organisation.name}`;
+      default:
+        throw new UnreachableCaseError(props.organisation.platform);
+    }
+  };
+
   return (
     <Flex variant={"organisations.item"}>
       <Box variant={"organisations.avatar"}>
         <OrganisationAvatar address={props.organisation.address} platform={props.organisation.platform} />
       </Box>
-      <Box>
+      <Box sx={{ flex: "1 1 auto" }}>
         <Box variant={"participant.name"}>{props.organisation.name}</Box>
         <div>
           <Box variant={"organisations.address"}>{props.organisation.address}</Box>
           <Box variant={"organisations.inline"}>Members: {props.organisation.participants.totalCount}</Box>
           <Box variant={"organisations.inline"}>Created: {formatDate(props.organisation.createdAt)}</Box>
         </div>
+      </Box>
+      <Box variant={"organisations.openAction"}>
+        <TLink href={organisationLink()} target={'_blank'}>
+          <span className={"title"}>Manage</span>☜
+        </TLink>
       </Box>
     </Flex>
   );
