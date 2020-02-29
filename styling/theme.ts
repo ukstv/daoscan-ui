@@ -50,8 +50,8 @@ export const THEME = {
     ...PALETTE,
     text: PALETTE.black[7],
     background: PALETTE.gray[1],
-    primary: PALETTE.blue[7], // blue.6
-    primaryHover: PALETTE.blue[6], // blue.5 TODO Remove
+    primary: PALETTE.blue[7],
+    primaryHover: PALETTE.blue[6],
     secondary: "#718096",
     muted: "#e2e8f0",
     success: "#9ae6b4",
