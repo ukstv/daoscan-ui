@@ -203,9 +203,9 @@ export const THEME = {
     },
     a: {
       color: "primary",
-      textDecoration: "none",
+      textDecoration: "underline",
       ":hover": {
-        textDecoration: "underline"
+        color: "primaryHover"
       }
     },
     h1: {
@@ -216,7 +216,11 @@ export const THEME = {
       m: 0,
       mb: 1,
       fontSize: 6,
-      mt: 2
+      mt: 2,
+      "& > a": {
+        color: "gray.8",
+        textDecoration: "none"
+      }
     },
     h2: {
       fontFamily: "heading",
@@ -671,7 +675,7 @@ export const THEME = {
         fontFamily: "body",
         fontWeight: "thin",
         color: "gray.7",
-        textDecoration: 'none'
+        textDecoration: "none"
       }
     },
     pageNav: {
@@ -689,8 +693,8 @@ export const THEME = {
     },
     pager: {
       arrow: {
-        display: 'block',
-        textDecoration: 'none',
+        display: "block",
+        textDecoration: "none",
         padding: 2,
         minWidth: "4rem",
         textAlign: "center",
@@ -711,8 +715,8 @@ export const THEME = {
           textAlign: "center",
           color: "white",
           backgroundColor: "muted",
-          display: 'block',
-          textDecoration: 'none',
+          display: "block",
+          textDecoration: "none",
           "&:hover": {
             color: "white",
             backgroundColor: "muted"

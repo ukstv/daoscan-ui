@@ -103,7 +103,9 @@ const OrganisationIndexPage: NextPage<Props> = props => {
         <Grid>
           <Box variant={"heading"}>
             <Styled.h1>
-              Organisations
+              <Link href={"/organisations"} passHref={true}>
+                <TLink>Organisations</TLink>
+              </Link>
             </Styled.h1>
           </Box>
         </Grid>
