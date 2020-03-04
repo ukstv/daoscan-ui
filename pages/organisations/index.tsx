@@ -103,7 +103,7 @@ interface Props {
 }
 
 const OrganisationIndexPage: NextPage<Props> = props => {
-  const { error, data } = useQuery<OrganisationsQuery>(ORGANISATIONS_QUERY, {
+  const { loading, error, data } = useQuery<OrganisationsQuery>(ORGANISATIONS_QUERY, {
     variables: {
       first: props.first,
       after: props.after,
@@ -141,7 +141,7 @@ const OrganisationIndexPage: NextPage<Props> = props => {
   };
 
   const renderContent = () => {
-    if (data) {
+    if (data && !loading) {
       const organisationRows = data.organisations.edges.map((e, i) => {
         return <OrganisationItem organisation={e.node} key={`org-${e.node.address}-${i}`} />;
       });
