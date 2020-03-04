@@ -13,6 +13,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { PLATFORM } from "../../lib/platform";
 import { UnreachableCaseError } from "../../lib/unreachable-case.error";
+import _ from "lodash";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -45,7 +46,7 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
         </div>
       </Box>
       <Box variant={"organisations.openAction"}>
-        <TLink href={organisationLink()} target={'_blank'}>
+        <TLink href={organisationLink()} target={"_blank"}>
           <span className={"title"}>Manage</span>☜
         </TLink>
       </Box>
@@ -106,41 +107,47 @@ const OrganisationIndexPage: NextPage<Props> = props => {
     }
   });
 
+  const renderPlaceholderRows = () => {
+    return _.times(25).map(i => {
+      return <p key={`p-${i}`}>p {i}</p>;
+    });
+  };
+
+  const renderContent = () => {
+    if (data) {
+      const organisationRows = data.organisations.edges.map((e, i) => {
+        return <OrganisationItem organisation={e.node} key={`org-${e.node.address}-${i}`} />;
+      });
+      return (
+        <>
+          {organisationRows}
+          <BottomPager pageInfo={data.organisations.pageInfo} totalCount={data.organisations.totalCount} />
+        </>
+      );
+    } else {
+      return renderPlaceholderRows();
+    }
+  };
+
   if (error) {
     console.error(error);
     return <p>Error</p>;
   }
 
-  if (data) {
-    const organisationRows = data.organisations.edges.map((e, i) => {
-      return <OrganisationItem organisation={e.node} key={`org-${e.node.address}-${i}`} />;
-    });
-
-    return (
-      <Layout>
-        <Grid>
-          <Box variant={"heading"}>
-            <Styled.h1>
-              <Link href={"/organisations"} passHref={true}>
-                <TLink>Organisations</TLink>
-              </Link>
-            </Styled.h1>
-          </Box>
-        </Grid>
-        <IntraGrid
-          content={
-            <>
-              {organisationRows}
-              <BottomPager pageInfo={data.organisations.pageInfo} totalCount={data.organisations.totalCount} />
-            </>
-          }
-          sidebar={<></>}
-        />
-      </Layout>
-    );
-  } else {
-    return <p>Loading...</p>;
-  }
+  return (
+    <Layout>
+      <Grid>
+        <Box variant={"heading"}>
+          <Styled.h1>
+            <Link href={"/organisations"} passHref={true}>
+              <TLink>Organisations</TLink>
+            </Link>
+          </Styled.h1>
+        </Box>
+      </Grid>
+      <IntraGrid content={renderContent()} sidebar={<></>} />
+    </Layout>
+  );
 };
 
 OrganisationIndexPage.getInitialProps = async context => {
