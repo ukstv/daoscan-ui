@@ -14,6 +14,8 @@ import Link from "next/link";
 import { PLATFORM } from "../../lib/platform";
 import { UnreachableCaseError } from "../../lib/unreachable-case.error";
 import _ from "lodash";
+import { OrganisationItemView } from "../../components/organisation-page/organisation-item.view";
+import { PulseAnimation } from "../../styling/pulse.animation";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -32,29 +34,22 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
     }
   };
 
-  return (
-    <Flex variant={"organisations.item"}>
-      <Box variant={"organisations.avatar"}>
-        <OrganisationAvatar address={props.organisation.address} platform={props.organisation.platform} />
-      </Box>
-      <Box sx={{ flex: "1 1 auto" }}>
-        <Box variant={"participant.name"}>{props.organisation.name}</Box>
-        <div>
-          <Box variant={"organisations.address"}>{props.organisation.address}</Box>
-          <Box variant={"organisations.inline"}>Members: {props.organisation.participants.totalCount}</Box>
-          <Box variant={"organisations.inline"}>Created: {formatDate(props.organisation.createdAt)}</Box>
-        </div>
-      </Box>
-      <Box variant={"organisations.openAction"}>
-        <TLink href={organisationLink()} target={"_blank"}>
-          <span className={"title"}>Manage</span>☜
-        </TLink>
-      </Box>
-    </Flex>
-  );
+  const viewProps = {
+    avatar: <OrganisationAvatar address={props.organisation.address} platform={props.organisation.platform} />,
+    name: props.organisation.name,
+    address: props.organisation.address,
+    totalCount: <>Members: {props.organisation.participants.totalCount}</>,
+    createdAt: <>Created: {formatDate(props.organisation.createdAt)}</>,
+    openAction: (
+      <TLink href={organisationLink()} target={"_blank"}>
+        <span className={"title"}>Manage</span>☜
+      </TLink>
+    )
+  };
+  return <OrganisationItemView {...viewProps} />;
 }
 
-function BottomPager(props: { pageInfo: PageInfo; totalCount: number }) {
+function BottomPager(props: { pageInfo: PageInfo; totalCount: number | undefined }) {
   const renderNextLink = () => {
     if (props.pageInfo.hasNextPage && props.pageInfo.endCursor) {
       return (
@@ -79,12 +74,22 @@ function BottomPager(props: { pageInfo: PageInfo; totalCount: number }) {
     }
   };
 
+  const renderPageNumber = () => {
+    if (props.totalCount) {
+      return (
+        <>
+          {props.pageInfo.startIndex}&thinsp;&ndash;&thinsp;{props.pageInfo.endIndex} of {props.totalCount}
+        </>
+      );
+    } else {
+      return <></>;
+    }
+  };
+
   return (
     <Flex variant={"pager.bottom"}>
       <Box>{renderPreviousLink()}</Box>
-      <Box variant={"pager.pageNumber"}>
-        {props.pageInfo.startIndex}&thinsp;&ndash;&thinsp;{props.pageInfo.endIndex} of {props.totalCount}
-      </Box>
+      <Box variant={"pager.pageNumber"}>{renderPageNumber()}</Box>
       <Box>{renderNextLink()}</Box>
     </Flex>
   );
@@ -108,9 +113,31 @@ const OrganisationIndexPage: NextPage<Props> = props => {
   });
 
   const renderPlaceholderRows = () => {
-    return _.times(25).map(i => {
-      return <p key={`p-${i}`}>p {i}</p>;
+    const rows = _.times(25).map(i => {
+      const props = {
+        avatar: <Box variant={"round"} sx={{ animation: PulseAnimation }} />,
+        name: <Box variant={"placeholder.row"} />,
+        address: <Box variant={"placeholder.row"} />,
+        totalCount: <Box variant={"placeholder.row"} />,
+        createdAt: <Box variant={"placeholder.row"} />,
+        openAction: <></>
+      };
+      return <OrganisationItemView {...props} key={`p-${i}`} />;
     });
+    const pageInfo = {
+      startIndex: 0,
+      endIndex: 0,
+      endCursor: "",
+      startCursor: "",
+      hasNextPage: false,
+      hasPreviousPage: false
+    };
+    return (
+      <>
+        {rows}
+        <BottomPager pageInfo={pageInfo} totalCount={0} />
+      </>
+    );
   };
 
   const renderContent = () => {

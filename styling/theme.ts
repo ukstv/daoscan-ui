@@ -1,3 +1,5 @@
+import { PulseAnimation } from "./pulse.animation";
+
 const PALETTE = {
   black: [
     null,
@@ -61,7 +63,8 @@ export const THEME = {
     light: "#f7fafc",
     dark: "#2d3748",
     textMuted: "#718096",
-    bevel: PALETTE.gray[4]
+    bevel: PALETTE.gray[4],
+    placeholder: PALETTE.gray[3]
   },
   fonts: {
     sans:
@@ -527,6 +530,25 @@ export const THEME = {
     }
   },
   variants: {
+    round: {
+      borderRadius: "50%",
+      overflow: "hidden",
+      padding: 0,
+      margin: 0,
+      width: "100%",
+      height: "100%",
+      display: "inline-block",
+      backgroundColor: "placeholder"
+    },
+    placeholder: {
+      row: {
+        backgroundColor: "placeholder",
+        height: "1.5em",
+        width: "8em",
+        display: "inline-block",
+        animation: PulseAnimation
+      }
+    },
     organisations: {
       avatar: {
         width: "3rem",
