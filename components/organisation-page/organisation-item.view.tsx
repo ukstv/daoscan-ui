@@ -16,11 +16,11 @@ export function OrganisationItemView(props: Props) {
       <Box variant={"organisations.avatar"}>{props.avatar}</Box>
       <Box sx={{ flex: "1 1 auto" }}>
         <Box variant={"participant.name"}>{props.name}</Box>
-        <div>
+        <Box sx={{overflowWrap: 'break-word'}}>
           <Box variant={"organisations.address"}>{props.address}</Box>
           <Box variant={"organisations.inline"}>{props.totalCount}</Box>
           <Box variant={"organisations.inline"}>{props.createdAt}</Box>
-        </div>
+        </Box>
       </Box>
       <Box variant={"organisations.openAction"}>{props.openAction}</Box>
     </Flex>

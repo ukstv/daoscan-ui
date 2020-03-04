@@ -565,13 +565,13 @@ export const THEME = {
         wordWrap: "unset",
         fontSize: "smaller",
         paddingRight: 2,
-        float: "left"
+        display: 'inline'
       },
       inline: {
         whiteSpace: "nowrap",
         fontSize: "smaller",
         paddingRight: 2,
-        float: "left"
+        display: 'inline'
       },
       openAction: {
         minWidth: "4rem",
@@ -595,10 +595,10 @@ export const THEME = {
         },
         "&:hover>a": {
           backgroundColor: "primaryHover",
-          color: "white"
+          color: "white",
         },
         "&:hover>a>span": {
-          display: "block",
+          display: [null, "block"],
           fontSize: 1,
           marginRight: 1
         }
@@ -690,7 +690,8 @@ export const THEME = {
       },
       name: {
         fontSize: "larger",
-        fontWeight: "bolder"
+        fontWeight: "bolder",
+        overflow: "scroll"
       },
       address: {
         fontSize: "smaller",
