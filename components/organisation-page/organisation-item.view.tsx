@@ -14,9 +14,9 @@ export function OrganisationItemView(props: Props) {
   return (
     <Flex variant={"organisations.item"}>
       <Box variant={"organisations.avatar"}>{props.avatar}</Box>
-      <Box sx={{ flex: "1 1 auto" }}>
+      <Box sx={{ flex: "1 1 auto", overflow: 'scroll' }}>
         <Box variant={"participant.name"}>{props.name}</Box>
-        <Box sx={{overflowWrap: 'break-word'}}>
+        <Box>
           <Box variant={"organisations.address"}>{props.address}</Box>
           <Box variant={"organisations.inline"}>{props.totalCount}</Box>
           <Box variant={"organisations.inline"}>{props.createdAt}</Box>

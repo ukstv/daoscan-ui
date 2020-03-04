@@ -565,13 +565,13 @@ export const THEME = {
         wordWrap: "unset",
         fontSize: "smaller",
         paddingRight: 2,
-        display: 'inline'
+        display: 'inline-block',
       },
       inline: {
         whiteSpace: "nowrap",
         fontSize: "smaller",
         paddingRight: 2,
-        display: 'inline'
+        display: 'inline-block',
       },
       openAction: {
         minWidth: "4rem",
@@ -691,7 +691,6 @@ export const THEME = {
       name: {
         fontSize: "larger",
         fontWeight: "bolder",
-        overflow: "scroll"
       },
       address: {
         fontSize: "smaller",
