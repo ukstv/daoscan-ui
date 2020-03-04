@@ -1,24 +1,18 @@
 import React from "react";
 import MersenneTwister from "mersenne-twister";
 import Color from "color";
-import styled from "@emotion/styled";
 import _ from "lodash";
 import { Colors } from "./colors";
+import { Box } from "@theme-ui/components";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const DEFAULT_SHAPE_COUNT = 4;
 
-// @ts-ignore
-const Paper = styled.div((props: { color: Color }) => ({
-  borderRadius: "50%",
-  overflow: "hidden",
-  padding: 0,
-  margin: 0,
-  width: "100%",
-  height: "100%",
-  display: "inline-block",
-  background: props.color.hex()
-}));
+const Paper = (props: React.PropsWithChildren<{ color: Color }>) => (
+  <Box variant={"round"} sx={{ backgroundColor: props.color.hex() }}>
+    {props.children}
+  </Box>
+);
 
 function Shape(props: { generator: MersenneTwister; total: number; index: number; colors: Colors }) {
   const diameter = 100;

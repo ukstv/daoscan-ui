@@ -7,12 +7,6 @@ import { PLATFORM } from "../../lib/platform";
 const aragonImage = require("./aragon-platform.png");
 const moloch1Image = require("./moloch-1-platform.png");
 
-const OrganisationAvatarE = styled.div`
-  width: 4rem;
-  height: 4rem;
-  margin-right: 1rem;
-`;
-
 const PlatformBadge = styled(Badge)`
   display: block;
   width: 50%;

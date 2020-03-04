@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/core";
 
-export const PulseKeyframes = keyframes({
+const Keyframes = keyframes({
   "0%": {
     opacity: 0.6
   },
@@ -11,3 +11,5 @@ export const PulseKeyframes = keyframes({
     opacity: 0.6
   }
 });
+
+export const PulseAnimation = `${Keyframes.toString()} 1.5s infinite`;

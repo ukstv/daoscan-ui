@@ -2,7 +2,7 @@ import React from "react";
 import { StatNumber } from "./stat-number";
 import { Box } from "@theme-ui/components";
 import ReactPlaceholder from "react-placeholder";
-import { PulseKeyframes } from "../../styling/pulse.keyframes";
+import { PulseAnimation } from "../../styling/pulse.animation";
 
 interface Props {
   name: string;
@@ -12,12 +12,11 @@ interface Props {
 
 const StatNumberPlaceholder = () => (
   <Box
+    variant={"placeholder.row"}
     sx={{
-      backgroundColor: "gray.3",
-      height: "1.5em",
       width: "5em",
       display: "inline-block",
-      animation: `${PulseKeyframes.toString()} 1.5s infinite`
+      animation: PulseAnimation
     }}
   />
 );
