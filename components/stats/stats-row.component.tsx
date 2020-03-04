@@ -22,11 +22,11 @@ const ORGANISATIONS_COUNT = gql`
 export function StatsRow() {
   const { error, data } = useQuery(ORGANISATIONS_COUNT, { pollInterval: 10000 });
 
-  let stats = {
-    organisationsCount: "~",
-    participantsCount: "~",
-    membershipsCount: "~",
-    lastBlock: "~"
+  let stats: { [k: string]: string | number | undefined } = {
+    organisationsCount: undefined,
+    participantsCount: undefined,
+    membershipsCount: undefined,
+    lastBlock: undefined
   };
 
   if (error) {

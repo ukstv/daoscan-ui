@@ -60,7 +60,8 @@ export const THEME = {
     danger: "#feb2b2",
     light: "#f7fafc",
     dark: "#2d3748",
-    textMuted: "#718096"
+    textMuted: "#718096",
+    bevel: PALETTE.gray[4]
   },
   fonts: {
     sans:
@@ -555,7 +556,7 @@ export const THEME = {
         marginTop: -2,
         marginRight: -2,
         marginBottom: -2,
-        borderLeft: 'bevel',
+        borderLeft: "bevel",
         "&>a": {
           display: "flex",
           alignItems: "center",
@@ -567,17 +568,17 @@ export const THEME = {
           height: "100%",
           padding: 2
         },
-        '&>a>span': {
-          display: 'none'
+        "&>a>span": {
+          display: "none"
         },
-        '&:hover>a': {
-          backgroundColor: 'primaryHover',
-          color: 'white'
+        "&:hover>a": {
+          backgroundColor: "primaryHover",
+          color: "white"
         },
-        '&:hover>a>span': {
-          display: 'block',
-          fontSize:1,
-          marginRight: 1,
+        "&:hover>a>span": {
+          display: "block",
+          fontSize: 1,
+          marginRight: 1
         }
       }
     },

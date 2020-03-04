@@ -6,7 +6,7 @@ interface Props {
   groupSeparator?: string;
   precision?: number;
   decimalSeparator?: string;
-  defaultValue: React.ReactNode;
+  defaultValue?: React.ReactNode;
 }
 
 export function FormattedNumber(props: Props) {

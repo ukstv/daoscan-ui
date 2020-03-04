@@ -19,7 +19,6 @@ export function StatNumber(props: Props) {
     <StatNumberE>
       <FormattedNumber
         value={props.value}
-        defaultValue={"loading..."}
         precision={props.precision}
         groupSeparator={props.groupSeparator}
         decimalSeparator={props.decimalSeparator}
