@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "3box": "^1.17.0",
+    "3box": "^1.17.1",
     "@apollo/react-hooks": "^3.1.3",
     "@apollo/react-ssr": "^3.1.3",
     "@emotion/core": "^10.0.27",
@@ -19,8 +19,8 @@
     "mersenne-twister": "^1.1.0",
     "next": "^9.2.1",
     "next-images": "^1.3.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-placeholder": "^4.0.0",
     "theme-ui": "^0.3.1"
   },
@@ -39,14 +39,14 @@
     "@types/lodash": "^4.14.149",
     "@types/luxon": "^1.21.0",
     "@types/mersenne-twister": "^1.1.2",
-    "@types/node": "^13.7.0",
-    "@types/react": "^16.9.19",
+    "@types/node": "^13.9.0",
+    "@types/react": "^16.9.23",
     "@types/theme-ui": "^0.3.0",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "prettier": "^1.19.1",
     "serverless": "^1.63.0",
     "serverless-next.js": "^1.8.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   }
 }
