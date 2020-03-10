@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <link rel="author" href="/humans.txt" />
         <meta name="apple-mobile-web-app-title" content="Daoscan" />
         <meta name="description" content="Daoscan - DAO Indexer" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
