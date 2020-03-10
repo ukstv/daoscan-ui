@@ -1,0 +1,30 @@
+/* CHEF */
+	Name: Sergey Ukustov
+	Contact: sergey [at] ukstv.me
+	Twitter: @ukstv
+	From: Volgograd, Russia
+
+/* THANKS TO MY DAO DASHBOARD CREW */
+
+	Wesley van Heije
+	Twitter: @wslyvh
+
+	Ben Adriaenssen
+	Twitter: @ben_adriaenssen
+
+  Chris Hobcroft
+	Twitter: @chrishobcroft
+
+/* SITE ICONS */
+  By: Freepik at Flaticon
+  Address: https://www.flaticon.com/authors/freepik
+
+  By: Darius Dan at Flaticon
+  Address: https://www.flaticon.com/authors/darius-dan
+
+  By: Good Ware at Flaticon
+  Address: https://www.flaticon.com/authors/good-ware
+
+  By: Pixel perfect at Flaticon
+  Address: https://www.flaticon.com/authors/pixel-perfect
+
