@@ -34,7 +34,6 @@ const Icon = styled.span`
 
 const Title = styled.span`
   font-size: x-large;
-  // font-weight: bolder;
 `;
 
 const InlineAvatar = styled.span`
@@ -114,7 +113,7 @@ function MembershipProposalCard(props: { proposal: Proposal }) {
   const description = parseDescription(p.payload.description);
 
   return (
-    <Card>
+    <Card variant={"proposal"}>
       <Flex>
         <Box sx={{ flex: "1 1 auto" }}>
           <Icon>
@@ -122,21 +121,31 @@ function MembershipProposalCard(props: { proposal: Proposal }) {
           </Icon>
           <Title>{description.title}</Title>
         </Box>
-        <Box><ProposalStatus proposal={p}/> #{p.index}</Box>
+        <Box>
+          <ProposalStatus proposal={p} /> #{p.index}
+        </Box>
       </Flex>
-      {renderDescriptionBox(description)}
-      <Box>
-        <strong>Applicant</strong> <InlineProfile address={p.payload.applicant} />
-      </Box>
-      <Box>
-        <strong>Proposer</strong> <InlineProfile address={p.proposer} />
-      </Box>
-      <p>
-        Requested: <TokenValue token={p.payload.sharesRequested} />
-      </p>
-      <p>
-        Tribute: <TokenValue token={p.payload.tribute} />
-      </p>
+      <Flex>
+        <Box>
+          {renderDescriptionBox(description)}
+          <Box>
+            <strong>Applicant</strong> <InlineProfile address={p.payload.applicant} />
+          </Box>
+          <Box>
+            <strong>Proposer</strong> <InlineProfile address={p.proposer} />
+          </Box>
+          <Box>
+            Requested: <TokenValue token={p.payload.sharesRequested} />
+          </Box>
+          <Box>
+            Tribute: <TokenValue token={p.payload.tribute} />
+          </Box>
+        </Box>
+        <Box>
+          <Box>Yes: 3</Box>
+          <Box>No: 4</Box>
+        </Box>
+      </Flex>
     </Card>
   );
 }
@@ -146,7 +155,7 @@ function GrantProposalCard(props: { proposal: Proposal }) {
   const description = parseDescription(p.payload.description);
 
   return (
-    <Card>
+    <Card variant={"proposal"}>
       <Flex>
         <Box sx={{ flex: "1 1 auto" }}>
           <Icon>
@@ -154,7 +163,9 @@ function GrantProposalCard(props: { proposal: Proposal }) {
           </Icon>
           <Title>{description.title}</Title>
         </Box>
-        <Box><ProposalStatus proposal={p}/> #{p.index}</Box>
+        <Box>
+          <ProposalStatus proposal={p} /> #{p.index}
+        </Box>
       </Flex>
       {renderDescriptionBox(description)}
       <Box>

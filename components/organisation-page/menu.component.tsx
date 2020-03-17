@@ -1,22 +1,15 @@
 import React from "react";
-import { Box, Flex, Grid, NavLink } from "@theme-ui/components";
+import { Flex, Grid, NavLink } from "@theme-ui/components";
 import { ActiveLink } from "../active-link.component";
-import styled from "@emotion/styled";
 
 interface Props {
   address: string;
 }
 
-const MenuRow = styled(Flex)`
-  margin-top: 1rem;
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
-`;
-
 export function Menu(props: Props) {
   return (
     <Grid>
-      <MenuRow as={"nav"}>
+      <Flex as={"nav"} sx={{ borderBottom: "bevel" }}>
         <ActiveLink href={`/organisations/[address]`} as={`/organisations/${props.address}`} passHref={true}>
           <NavLink variant={"pageNav"}>Overview</NavLink>
         </ActiveLink>
@@ -34,7 +27,7 @@ export function Menu(props: Props) {
         >
           <NavLink variant={"pageNav"}>Participants</NavLink>
         </ActiveLink>
-      </MenuRow>
+      </Flex>
     </Grid>
   );
 }

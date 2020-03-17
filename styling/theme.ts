@@ -55,7 +55,7 @@ export const THEME = {
     primary: PALETTE.blue[7],
     primaryHover: PALETTE.blue[6],
     secondary: "#718096",
-    muted: "#e2e8f0",
+    muted: PALETTE.gray[3],
     success: "#9ae6b4",
     info: "#63b3ed",
     warning: "#faf089",
@@ -511,6 +511,12 @@ export const THEME = {
       padding: 3,
       borderRadius: 2,
       boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)"
+    },
+    proposal: {
+      padding: 2,
+      borderRadius: 0,
+      boxShadow: 'none',
+      borderBottom: 'bevel'
     }
   },
   grids: {
@@ -732,16 +738,20 @@ export const THEME = {
       }
     },
     pageNav: {
-      padding: "0.2rem 1rem",
-      color: "white.6",
+      padding: 2,
       fontWeight: "normal",
+      borderRight: 'bevel',
       "&:hover": {
         color: "text",
-        bg: "light"
+        bg: "yellow.6"
       },
       "&.active": {
-        fontWeight: "bold",
-        color: "black"
+        color: "white",
+        backgroundColor: 'yellow.7'
+      },
+      "&:hover.active": {
+        color: "white",
+        backgroundColor: 'yellow.6'
       }
     },
     pager: {

@@ -30,7 +30,7 @@ export const Proposals: NextPage<{ address: string }> = props => {
     const platform = data.organisation.platform;
     return (
       <OrganisationLayout organisation={data.organisation}>
-        <Grid>
+        <Grid variant={'condensed'}>
           <ProposalsTable proposals={proposals} platform={platform} />
         </Grid>
       </OrganisationLayout>
