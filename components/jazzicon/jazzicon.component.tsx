@@ -23,7 +23,7 @@ function Shape(props: { generator: MersenneTwister; total: number; index: number
   const tx = Math.cos(angle) * velocity;
   const ty = Math.sin(angle) * velocity;
 
-  const translate = "translate(" + tx + " " + ty + ")";
+  const translate = "translate(" + tx.toFixed(3) + " " + ty.toFixed(3) + ")";
 
   const secondRot = props.generator.random();
   const rot = firstRot * 360 + secondRot * 180;

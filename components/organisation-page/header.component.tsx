@@ -33,27 +33,30 @@ function bankValue(bank: BankItem[]): number {
 
 export function OrganisationHeader(props: Props) {
   return (
-    <Grid>
-      <Flex>
-        <Box>
-          <OrganisationAvatar address={props.organisation.address} platform={props.organisation.platform} />
-        </Box>
-        <Box>
-          <OrganisationTitle>{props.organisation.name}</OrganisationTitle>
-          <OrganisationAddress>{props.organisation.address}</OrganisationAddress>
-        </Box>
-        <Box>
-          <Stat number={props.organisation.participants.totalCount} icon={<UserIcon />} title={"Participants"} />
-          <Stat number={TokenValue.toNumber(props.organisation.totalSupply)} precision={0} icon={<ShareIcon />} title={"Shares"} />
-          <Stat
-            number={bankValue(props.organisation.bank)}
-            numberPrefix={"$"}
-            precision={0}
-            icon={<BankIcon />}
-            title={"Bank Value"}
-          />
-        </Box>
-      </Flex>
-    </Grid>
+    <Flex variant={"organisations.item"}>
+      <Box sx={{ width: "4rem", height: "4rem", marginRight: 2 }}>
+        <OrganisationAvatar address={props.organisation.address} platform={props.organisation.platform} />
+      </Box>
+      <Box>
+        <OrganisationTitle>{props.organisation.name}</OrganisationTitle>
+        <OrganisationAddress>{props.organisation.address}</OrganisationAddress>
+      </Box>
+      <Box>
+        <Stat number={props.organisation.participants.totalCount} icon={<UserIcon />} title={"Participants"} />
+        <Stat
+          number={TokenValue.toNumber(props.organisation.totalSupply)}
+          precision={0}
+          icon={<ShareIcon />}
+          title={"Shares"}
+        />
+        <Stat
+          number={bankValue(props.organisation.bank)}
+          numberPrefix={"$"}
+          precision={0}
+          icon={<BankIcon />}
+          title={"Bank Value"}
+        />
+      </Box>
+    </Flex>
   );
 }

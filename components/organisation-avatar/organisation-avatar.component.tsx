@@ -9,15 +9,17 @@ const moloch1Image = require("./moloch-1-platform.png");
 
 const PlatformBadge = styled(Badge)`
   display: block;
-  width: 50%;
-  height: 50%;
+  width: 65%;
+  height: 65%;
+  background-color: transparent;
+  padding: 0;
+  border-radius: none;
   z-index: 100;
   margin-top: -70%;
-  margin-left: -10%;
-  background-color: transparent;
+  margin-left: -5%;
   & img {
-    width: 2rem;
-    height: 2rem;
+    width: 100%;
+    height: 100%;
   }
 `;
 
