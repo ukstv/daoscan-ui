@@ -5,8 +5,8 @@ import { Grid } from "@theme-ui/components";
 import { Statistic } from "./statistic.component";
 import HomeIcon from "../images/home.icon.svg";
 import DeploymentIcon from "../images/deployment.icon.svg";
-import UserIcon from "../jazzicon/user.icon.svg";
-import BlockIcon from "../jazzicon/vertical-align-top.icon.svg";
+import UserIcon from "./user.icon.svg";
+import BlockIcon from "./vertical-align-top.icon.svg";
 
 const ORGANISATIONS_COUNT = gql`
   query {
