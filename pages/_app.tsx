@@ -3,7 +3,7 @@ import "graphiql/graphiql.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/images/logo192.png" />
         <link rel="icon" href="/images/logo192.png" sizes="192x192" />
         <link rel="icon" href="/images/logo512.png" sizes="512x512" />
@@ -38,4 +38,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default App;
