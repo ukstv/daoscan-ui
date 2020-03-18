@@ -1,25 +1,20 @@
 import React from "react";
-import { Box, Container, ThemeProvider } from "theme-ui";
-import { THEME } from "../theme/theme";
-import { TopBar } from "./top-bar.component";
-import { Socials } from "./socials/socials.component";
+import { Box, Container, jsx, Styled, ThemeProvider } from "theme-ui";
+import { THEME } from "../../theme/theme";
 
 export function Layout(props: React.PropsWithChildren<{ className?: string }>) {
   return (
     <ThemeProvider theme={THEME}>
-      <Box variant={"layout.wrapper"}>
-        <Box variant={"layout.header"}>
-          <TopBar />
-        </Box>
+      <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        Foo
+        <Box variant={"layout.header"}>Hello{/*<TopBar />*/}</Box>
         <Box variant={"layout.main"}>
           <Container variant={"main"} className={props.className}>
             {props.children}
           </Container>
         </Box>
         <Box variant={"layout.footer"}>
-          <Container>
-            <Socials />
-          </Container>
+          <Container>{/*<Socials />*/}</Container>
         </Box>
       </Box>
     </ThemeProvider>

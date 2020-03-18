@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import React from "react";
-import { Layout } from "../components/layout.component";
+import { Layout } from "../components/layout/layout.component";
 import { Box, Grid } from "@theme-ui/components";
 import { GraphqlEditor } from "../components/graphql-editor.component";
 import { StatsRow } from "../components/stats/stats-row.component";
