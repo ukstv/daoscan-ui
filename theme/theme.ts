@@ -1,11 +1,12 @@
 import { PulseAnimation } from "../styling/pulse.animation";
-import { BORDERS } from "./borders";
+import { BORDER_SIZES } from "./border-sizes";
 import { BREAKPOINTS } from "./breakpoints";
 import { COLORS } from "./colors";
 import { PALETTE } from "./palette";
+import { BORDERS } from "./borders";
 
 export const THEME = {
-  borderWidths: BORDERS,
+  borderWidths: BORDER_SIZES,
   breakpoints: BREAKPOINTS,
   colors: {
     ...COLORS,
@@ -115,7 +116,7 @@ export const THEME = {
     screenWidth: "100vw"
   },
   borders: {
-    bevel: `${BORDERS["1"]} solid ${COLORS.bevel}`
+    bevel: BORDERS.bevel
   },
   shadows: {
     default: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
@@ -427,8 +428,8 @@ export const THEME = {
       paddingLeft: 0,
       marginRight: "auto",
       marginLeft: "auto",
-      borderLeft: "bevel",
-      borderRight: "bevel",
+      borderLeft: BORDERS.bevel,
+      borderRight: BORDERS.bevel,
       flex: "1 1 auto",
       display: "flex",
       flexDirection: "column",

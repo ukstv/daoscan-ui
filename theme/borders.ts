@@ -1,8 +1,6 @@
+import { BORDER_SIZES } from "./border-sizes";
+import { COLORS } from "./colors";
+
 export const BORDERS = {
-  "0": "0",
-  "1": "1px",
-  "2": "2px",
-  "4": "4px",
-  "8": "8px",
-  px: "1px"
+  bevel: `${BORDER_SIZES["1"]} solid ${COLORS.bevel}`
 };

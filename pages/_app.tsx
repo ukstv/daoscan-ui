@@ -2,6 +2,8 @@ import * as React from "react";
 import "graphiql/graphiql.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { THEME } from "../theme/theme";
+import { ThemeProvider } from "theme-ui";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -24,16 +26,18 @@ function App({ Component, pageProps }: AppProps) {
         />
         <title>DAO Indexer</title>
       </Head>
-      <Component {...pageProps} />
-      <script data-goatcounter="https://daoscan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-      <style global jsx>{`
-        html,
-        body,
-        body > div:first-child,
-        div#__next {
-          height: 100%;
-        }
-      `}</style>
+      <ThemeProvider theme={THEME}>
+        <Component {...pageProps} />
+        <script data-goatcounter="https://daoscan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+        <style global jsx>{`
+          html,
+          body,
+          body > div:first-child,
+          div#__next {
+            height: 100%;
+          }
+        `}</style>
+      </ThemeProvider>
     </>
   );
 }
