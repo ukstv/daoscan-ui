@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { FixedWidthContainer } from "./fixed-width.container";
+import { FixedWidthComponent } from "./fixed-width.component";
 import { css } from "theme-ui";
 import { EDGE_QUERY } from "./edge-query";
 
-export const EdgedFixedWidthContainer = styled(FixedWidthContainer)(
+export const EdgedFixedWidthComponent = styled(FixedWidthComponent)(
   css({
     [EDGE_QUERY]: {
       paddingLeft: 2,

@@ -15,7 +15,8 @@ import { PLATFORM } from "../../lib/platform";
 import { UnreachableCaseError } from "../../lib/unreachable-case.error";
 import _ from "lodash";
 import { OrganisationItemView } from "../../components/organisation-page/organisation-item.view";
-import { PulseAnimation } from "../../styling/pulse.animation";
+import { PulseAnimation } from "../../components/placeholders/pulse.animation";
+import { PlaceholderRow } from "../../components/placeholders/placeholder-row";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -116,10 +117,10 @@ const OrganisationIndexPage: NextPage<Props> = props => {
     const rows = _.times(25).map(i => {
       const props = {
         avatar: <Box variant={"round"} sx={{ animation: PulseAnimation }} />,
-        name: <Box variant={"placeholder.row"} />,
-        address: <Box variant={"placeholder.row"} />,
-        totalCount: <Box variant={"placeholder.row"} />,
-        createdAt: <Box variant={"placeholder.row"} />,
+        name: <PlaceholderRow />,
+        address: <PlaceholderRow />,
+        totalCount: <PlaceholderRow />,
+        createdAt: <PlaceholderRow />,
         openAction: <></>
       };
       return <OrganisationItemView {...props} key={`p-${i}`} />;

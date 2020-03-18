@@ -2,7 +2,7 @@ import React from "react";
 import { css } from "theme-ui";
 import styled from "@emotion/styled";
 import { Header } from "./header.component";
-import { FixedWidthContainer } from "./fixed-width.container";
+import { FixedWidthComponent } from "./fixed-width.component";
 import { BORDERS } from "../../theme/borders";
 import { EDGE_QUERY } from "./edge-query";
 import { Socials } from "../socials/socials.component";
@@ -35,7 +35,7 @@ const FooterRow = styled.div(
     borderTop: "bevel"
   })
 );
-const BodyContainer = styled(FixedWidthContainer)(
+const BodyContainer = styled(FixedWidthComponent)(
   css({
     borderLeft: BORDERS.bevel,
     borderRight: BORDERS.bevel,
@@ -63,9 +63,9 @@ export function Layout(props: React.PropsWithChildren<{}>) {
         <BodyContainer>{props.children}</BodyContainer>
       </BodyRow>
       <FooterRow>
-        <FixedWidthContainer>
+        <FixedWidthComponent>
           <Socials />
-        </FixedWidthContainer>
+        </FixedWidthComponent>
       </FooterRow>
     </Column>
   );

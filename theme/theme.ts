@@ -1,4 +1,4 @@
-import { PulseAnimation } from "../styling/pulse.animation";
+import { PulseAnimation } from "../components/placeholders/pulse.animation";
 import { BORDER_SIZES } from "./border-sizes";
 import { BREAKPOINTS } from "./breakpoints";
 import { COLORS } from "./colors";
@@ -403,36 +403,6 @@ export const THEME = {
       }
     }
   },
-  layout: {
-    container: {
-      width: "100%",
-      paddingRight: 0,
-      paddingLeft: 0,
-      marginRight: "auto",
-      marginLeft: "auto",
-      maxWidth: [540, 720, 960, 1140]
-    },
-    main: {
-      width: "100%",
-      paddingRight: 0,
-      paddingLeft: 0,
-      marginRight: "auto",
-      marginLeft: "auto",
-      borderLeft: BORDERS.bevel,
-      borderRight: BORDERS.bevel,
-      flex: "1 1 auto",
-      display: "flex",
-      flexDirection: "column",
-      overflow: "hidden",
-      maxWidth: [null, null, 960, 1140],
-      // Hide border when width == viewport
-      // breakpoints: ["640px", "768px", "1024px", "1280px"],
-      "@media screen and (min-width: 640px) and (max-width: 960px), (min-width: 1024px) and (max-width: 1140px), (max-width: 640px)": {
-        borderLeft: "none",
-        borderRight: "none"
-      }
-    }
-  },
   images: {
     social: {
       width: 8,
@@ -459,9 +429,6 @@ export const THEME = {
     intraGrid: {
       flex: "1 1 auto"
     },
-    condensed: {
-      gridGap: 0
-    },
     organisations: {
       details: {
         gridTemplateColumns: "20rem max-content max-content",
@@ -481,15 +448,6 @@ export const THEME = {
       height: "100%",
       display: "inline-block",
       backgroundColor: "placeholder"
-    },
-    placeholder: {
-      row: {
-        backgroundColor: "placeholder",
-        height: "1.5em",
-        width: "8em",
-        display: "inline-block",
-        animation: PulseAnimation
-      }
     },
     organisations: {
       avatar: {
@@ -559,58 +517,6 @@ export const THEME = {
         flex: [1],
         borderLeft: "bevel"
       }
-    },
-    statistic: {
-      card: {
-        padding: 3,
-        textAlign: "center",
-        borderLeft: "bevel",
-        borderBottom: "bevel",
-        boxShadow: "none",
-        color: "heading",
-        "&:first-of-type": {
-          borderLeft: "none"
-        }
-      },
-      title: {
-        color: "body",
-        marginBottom: 2
-      },
-      icon: {
-        display: "inline",
-        "& svg": {
-          width: 9,
-          height: 9,
-          verticalAlign: "text-bottom",
-          marginRight: 1
-        }
-      }
-    },
-    layout: {
-      // wrapper: {
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   minHeight: "100vh"
-      // },
-      // header: {
-      //   borderBottom: "bevel",
-      //   height: 12,
-      //   lineHeight: "3rem",
-      //   "@media screen and (min-width: 640px) and (max-width: 960px), (min-width: 1024px) and (max-width: 1140px), (max-width: 640px)": {
-      //     paddingLeft: 2,
-      //     paddingRight: 2
-      //   }
-      // },
-      // main: {
-      //   width: "100%",
-      //   flex: "1 1 auto",
-      //   display: "flex",
-      //   flexDirection: "column"
-      // },
-      // footer: {
-      //   padding: 2,
-      //   borderTop: "bevel"
-      // }
     },
     description: {
       backgroundColor: "blue.7",

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Link } from "../navigation/link";
 import { css } from "theme-ui";
 import { FONT_WEIGHT } from "../../theme/font-weight";
-import { EdgedFixedWidthContainer } from "./edged-fixed-width.container";
+import { EdgedFixedWidthComponent } from "./edged-fixed-width.component";
 
 const LogoLink = styled(Link)(
   css({
@@ -32,7 +32,7 @@ const MenuLink = styled(Link)(
     textDecoration: "none"
   })
 );
-const Container = styled(EdgedFixedWidthContainer)({
+const Container = styled(EdgedFixedWidthComponent)({
   display: "flex"
 });
 

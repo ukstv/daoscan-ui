@@ -12,4 +12,4 @@ const style = css({
   maxWidth: CONTAINER_BREAKPOINTS,
 });
 
-export const FixedWidthContainer = styled.div(style);
+export const FixedWidthComponent = styled.div(style);

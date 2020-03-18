@@ -1,12 +1,12 @@
 import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-import { Grid } from "@theme-ui/components";
 import { Statistic } from "./statistic.component";
 import HomeIcon from "../images/home.icon.svg";
 import DeploymentIcon from "../images/deployment.icon.svg";
 import UserIcon from "./user.icon.svg";
 import BlockIcon from "./vertical-align-top.icon.svg";
+import { CondensedGrid } from "../layout/condensed-grid";
 
 const ORGANISATIONS_COUNT = gql`
   query {
@@ -41,11 +41,11 @@ export function StatsRow() {
   }
 
   return (
-    <Grid variant={"condensed"} columns={[2, 2, 4]}>
+    <CondensedGrid columns={[2, 2, 4]}>
       <Statistic name={"Organisations"} value={stats.organisationsCount} icon={<HomeIcon />} />
       <Statistic name={"Memberships"} value={stats.membershipsCount} icon={<DeploymentIcon />} />
       <Statistic name={"Participants"} value={stats.participantsCount} icon={<UserIcon />} />
       <Statistic name={"Last Block Known"} value={stats.lastBlock} icon={<BlockIcon />} />
-    </Grid>
+    </CondensedGrid>
   );
 }

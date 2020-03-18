@@ -1,8 +1,10 @@
 import React from "react";
 import { StatNumber } from "./stat-number";
-import { Box } from "@theme-ui/components";
 import ReactPlaceholder from "react-placeholder";
-import { PulseAnimation } from "../../styling/pulse.animation";
+import styled from "@emotion/styled";
+import { PlaceholderRow } from "../placeholders/placeholder-row";
+import { css } from "theme-ui";
+import { BORDERS } from "../../theme/borders";
 
 interface Props {
   name: string;
@@ -10,26 +12,52 @@ interface Props {
   icon: React.ReactNode;
 }
 
-const StatNumberPlaceholder = () => (
-  <Box
-    variant={"placeholder.row"}
-    sx={{
-      width: "5em",
-      display: "inline-block",
-      animation: PulseAnimation
-    }}
-  />
+const StatNumberPlaceholder = styled(PlaceholderRow)(
+  css({
+    width: "5em"
+  })
+);
+
+const Card = styled.div(
+  css({
+    padding: 3,
+    textAlign: "center",
+    borderLeft: BORDERS.bevel,
+    borderBottom: BORDERS.bevel,
+    boxShadow: "none",
+    "&:first-of-type": {
+      borderLeft: "none"
+    }
+  })
+);
+
+const Title = styled.div(
+  css({
+    marginBottom: 2
+  })
+);
+
+const Icon = styled.div(
+  css({
+    display: "inline",
+    "& svg": {
+      width: 9,
+      height: 9,
+      verticalAlign: "text-bottom",
+      marginRight: 1
+    }
+  })
 );
 
 export function Statistic(props: Props) {
   const isReady = Boolean(props.value);
   return (
-    <Box variant={"statistic.card"}>
-      <Box variant={"statistic.title"}>{props.name}</Box>
-      <Box variant={"statistic.icon"}>{props.icon}</Box>
+    <Card>
+      <Title>{props.name}</Title>
+      <Icon>{props.icon}</Icon>
       <ReactPlaceholder customPlaceholder={<StatNumberPlaceholder />} ready={isReady}>
         <StatNumber value={props.value!} />
       </ReactPlaceholder>
-    </Box>
+    </Card>
   );
 }

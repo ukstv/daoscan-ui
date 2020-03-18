@@ -12,6 +12,7 @@ import { OrganisationLayout } from "../../../components/organisation-page/layout
 import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../../lib/apollo";
 import { ProposalsTable } from "../../../components/organisation-page/proposals-table.component";
+import { CondensedGrid } from "../../../components/layout/condensed-grid";
 
 export const Proposals: NextPage<{ address: string }> = props => {
   const router = useRouter();
@@ -30,9 +31,9 @@ export const Proposals: NextPage<{ address: string }> = props => {
     const platform = data.organisation.platform;
     return (
       <OrganisationLayout organisation={data.organisation}>
-        <Grid variant={'condensed'}>
+        <CondensedGrid>
           <ProposalsTable proposals={proposals} platform={platform} />
-        </Grid>
+        </CondensedGrid>
       </OrganisationLayout>
     );
   } else {
