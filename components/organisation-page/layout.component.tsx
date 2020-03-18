@@ -1,7 +1,7 @@
 import React from "react";
 import { OrganisationProps } from "./props";
 import { OrganisationHeader } from "./header.component";
-import { Layout } from "../layout.component";
+import { Layout } from "../layout/layout.component";
 import { Menu } from "./menu.component";
 
 interface Props {

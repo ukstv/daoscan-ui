@@ -7,11 +7,6 @@ import { StatsRow } from "../components/stats/stats-row.component";
 import { withApollo } from "../lib/apollo";
 import styled from "@emotion/styled";
 
-const LayoutWithGraphiQL = styled(Layout)`
-  display: flex;
-  flex-direction: column;
-`;
-
 const GraphiQLRow = styled(Grid)`
   display: flex;
   flex: 1 1 auto;
@@ -19,7 +14,7 @@ const GraphiQLRow = styled(Grid)`
 
 const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
   return (
-    <LayoutWithGraphiQL>
+    <Layout>
       <Grid>
         <Box variant={"description"}>
           Daoscan indexes Ethereum blockchain and provides up to date information on DAO activity.
@@ -29,7 +24,7 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
       <GraphiQLRow>
         <GraphqlEditor />
       </GraphiQLRow>
-    </LayoutWithGraphiQL>
+    </Layout>
   );
 };
 

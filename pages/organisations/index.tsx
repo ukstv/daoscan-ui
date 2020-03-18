@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../../components/layout.component";
+import { Layout } from "../../components/layout/layout.component";
 import { Box, Flex, Grid, NavLink, Link as TLink } from "@theme-ui/components";
 import { Styled } from "theme-ui";
 import { useQuery } from "@apollo/react-hooks";

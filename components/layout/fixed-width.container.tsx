@@ -1,6 +1,15 @@
 import React from "react";
-import { Box } from "@theme-ui/components";
+import { css } from "theme-ui";
+import { CONTAINER_BREAKPOINTS } from "../../theme/breakpoints";
+import styled from "@emotion/styled";
 
-export function FixedWidthContainer(props: React.PropsWithChildren<{}>) {
-  return <Box>{props.children}</Box>;
-}
+const style = css({
+  width: "100%",
+  paddingRight: 0,
+  paddingLeft: 0,
+  marginRight: "auto",
+  marginLeft: "auto",
+  maxWidth: CONTAINER_BREAKPOINTS,
+});
+
+export const FixedWidthContainer = styled.div(style);

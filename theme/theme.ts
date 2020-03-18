@@ -4,6 +4,7 @@ import { BREAKPOINTS } from "./breakpoints";
 import { COLORS } from "./colors";
 import { PALETTE } from "./palette";
 import { BORDERS } from "./borders";
+import { FONT_WEIGHT } from "./font-weight";
 
 export const THEME = {
   borderWidths: BORDER_SIZES,
@@ -24,18 +25,7 @@ export const THEME = {
     logo: "Oswald, Open Sans, sans-serif"
   },
   fontSizes: ["0.875rem", "1rem", "1.25rem", "1.5rem", "1.875rem", "2.25rem", "3rem", "4rem", "4.5rem"],
-  fontWeights: {
-    thin: "100",
-    light: "200",
-    normal: "300",
-    medium: "500",
-    semibold: "600",
-    bold: "700",
-    extrabold: "800",
-    black: "900",
-    body: "300",
-    heading: "700"
-  },
+  fontWeights: FONT_WEIGHT,
   letterSpacings: {
     tighter: "-0.05em",
     tight: "-0.025em",
@@ -556,12 +546,6 @@ export const THEME = {
         }
       }
     },
-    topBar: {
-      menu: {
-        flex: "1 1 auto",
-        textAlign: "right"
-      }
-    },
     heading: {
       borderBottom: "bevel",
       paddingLeft: 2
@@ -603,30 +587,30 @@ export const THEME = {
       }
     },
     layout: {
-      wrapper: {
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh"
-      },
-      header: {
-        borderBottom: "bevel",
-        height: 12,
-        lineHeight: "3rem",
-        "@media screen and (min-width: 640px) and (max-width: 960px), (min-width: 1024px) and (max-width: 1140px), (max-width: 640px)": {
-          paddingLeft: 2,
-          paddingRight: 2
-        }
-      },
-      main: {
-        width: "100%",
-        flex: "1 1 auto",
-        display: "flex",
-        flexDirection: "column"
-      },
-      footer: {
-        padding: 2,
-        borderTop: "bevel"
-      }
+      // wrapper: {
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   minHeight: "100vh"
+      // },
+      // header: {
+      //   borderBottom: "bevel",
+      //   height: 12,
+      //   lineHeight: "3rem",
+      //   "@media screen and (min-width: 640px) and (max-width: 960px), (min-width: 1024px) and (max-width: 1140px), (max-width: 640px)": {
+      //     paddingLeft: 2,
+      //     paddingRight: 2
+      //   }
+      // },
+      // main: {
+      //   width: "100%",
+      //   flex: "1 1 auto",
+      //   display: "flex",
+      //   flexDirection: "column"
+      // },
+      // footer: {
+      //   padding: 2,
+      //   borderTop: "bevel"
+      // }
     },
     description: {
       backgroundColor: "blue.7",
@@ -664,25 +648,6 @@ export const THEME = {
     }
   },
   links: {
-    topBar: {
-      logo: {
-        height: "3rem",
-        display: "inline",
-        fontFamily: "logo",
-        textTransform: "uppercase",
-        "& svg": {
-          width: "3rem",
-          height: "3rem",
-          verticalAlign: "bottom"
-        }
-      },
-      menu: {
-        fontFamily: "body",
-        fontWeight: "thin",
-        color: "gray.7",
-        textDecoration: "none"
-      }
-    },
     pageNav: {
       padding: 2,
       fontWeight: "normal",

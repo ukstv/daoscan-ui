@@ -1,42 +1,72 @@
 import React from "react";
-import { Box, Container, Flex, Styled, jsx } from "theme-ui";
-import Link from "next/link";
-import { NavLink } from "@theme-ui/components";
-import { withSx } from "../../lib/with-sx";
+import { css } from "theme-ui";
+import styled from "@emotion/styled";
+import { Header } from "./header.component";
+import { FixedWidthContainer } from "./fixed-width.container";
+import { BORDERS } from "../../theme/borders";
+import { EDGE_QUERY } from "./edge-query";
+import { Socials } from "../socials/socials.component";
 
-const Column = withSx(Box, { display: "flex", flexDirection: "column", minHeight: "100vh" });
-const HeaderRow = withSx(Box, { borderBottom: "bevel", height: 12, lineHeight: "3rem" });
+const Column = styled.div(
+  css({
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh"
+  })
+);
+const HeaderRow = styled.div(
+  css({
+    borderBottom: "bevel",
+    height: 12,
+    lineHeight: "3rem"
+  })
+);
+const BodyRow = styled.div(
+  css({
+    width: "100%",
+    flex: "1 1 auto",
+    display: "flex",
+    flexDirection: "column"
+  })
+);
+const FooterRow = styled.div(
+  css({
+    padding: 2,
+    borderTop: "bevel"
+  })
+);
+const BodyContainer = styled(FixedWidthContainer)(
+  css({
+    borderLeft: BORDERS.bevel,
+    borderRight: BORDERS.bevel,
+    flex: "1 1 auto",
+    display: "flex",
+    flexDirection: "column",
+    overflow: "hidden",
+    maxWidth: [960, 960, 960, 1140],
+    // Hide border when width == viewport
+    // breakpoints: ["640px", "768px", "1024px", "1280px"],
+    [EDGE_QUERY]: {
+      borderLeft: "none",
+      borderRight: "none"
+    }
+  })
+);
 
-export function Layout(props: React.PropsWithChildren<{ className?: string }>) {
+export function Layout(props: React.PropsWithChildren<{}>) {
   return (
     <Column>
       <HeaderRow>
-        <Container>
-          <Flex>
-            <Box>
-              <Link href={"/"} passHref={true}>
-                <NavLink variant={"topBar.logo"}>
-                  {/*<LogoIcon />*/}
-                  Daoscan
-                </NavLink>
-              </Link>
-            </Box>
-            <Box variant={"topBar.menu"}>
-              <Link href={"/organisations"} passHref={true}>
-                <NavLink variant={"topBar.menu"}>Organisations</NavLink>
-              </Link>
-            </Box>
-          </Flex>
-        </Container>
+        <Header />
       </HeaderRow>
-      <Box variant={"layout.main"}>
-        <Container variant={"main"} className={props.className}>
-          {props.children}
-        </Container>
-      </Box>
-      <Box variant={"layout.footer"}>
-        <Container>{/*<Socials />*/}</Container>
-      </Box>
+      <BodyRow>
+        <BodyContainer>{props.children}</BodyContainer>
+      </BodyRow>
+      <FooterRow>
+        <FixedWidthContainer>
+          <Socials />
+        </FixedWidthContainer>
+      </FooterRow>
     </Column>
   );
 }
