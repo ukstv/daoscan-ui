@@ -1,4 +1,3 @@
-import { PulseAnimation } from "../components/placeholders/pulse.animation";
 import { BORDER_SIZES } from "./border-sizes";
 import { BREAKPOINTS } from "./breakpoints";
 import { COLORS } from "./colors";
