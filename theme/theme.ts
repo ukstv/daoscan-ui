@@ -447,57 +447,6 @@ export const THEME = {
       display: "inline-block",
       backgroundColor: "placeholder"
     },
-    organisations: {
-      avatar: {
-        width: "3rem",
-        height: "3rem",
-        minWidth: "3rem",
-        marginRight: 2
-      },
-      address: {
-        fontFamily: "mono",
-        wordWrap: "unset",
-        fontSize: "smaller",
-        paddingRight: 2,
-        display: "inline-block"
-      },
-      inline: {
-        whiteSpace: "nowrap",
-        fontSize: "smaller",
-        paddingRight: 2,
-        display: "inline-block"
-      },
-      openAction: {
-        minWidth: "4rem",
-        marginTop: -2,
-        marginRight: -2,
-        marginBottom: -2,
-        borderLeft: "bevel",
-        "&>a": {
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minWidth: "4rem",
-          fontSize: "x-large",
-          textAlign: "center",
-          textDecoration: "none",
-          height: "100%",
-          padding: 2
-        },
-        "&>a>span": {
-          display: "none"
-        },
-        "&:hover>a": {
-          backgroundColor: "primaryHover",
-          color: "white"
-        },
-        "&:hover>a>span": {
-          display: [null, "block"],
-          fontSize: 1,
-          marginRight: 1
-        }
-      }
-    },
     description: {
       backgroundColor: "blue.7",
       padding: 2,
@@ -518,6 +467,6 @@ export const THEME = {
         fontSize: "smaller",
         fontFamily: "mono"
       }
-    },
-  },
+    }
+  }
 };

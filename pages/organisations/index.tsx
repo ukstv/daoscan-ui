@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "../../components/layout/layout.component";
-import { Box, Link as TLink } from "@theme-ui/components";
+import { Box, Link as PureLink } from "@theme-ui/components";
 import { Styled } from "theme-ui";
 import { useQuery } from "@apollo/react-hooks";
 import { ORGANISATIONS_QUERY, OrganisationsQuery } from "../../components/organisations/queries";
@@ -17,7 +17,7 @@ import { OrganisationItemView } from "../../components/organisations/organisatio
 import { PulseAnimation } from "../../components/placeholders/pulse.animation";
 import { PlaceholderRow } from "../../components/placeholders/placeholder-row";
 import { PageHeading } from "../../components/layout/page-heading";
-import { Link as BLink } from "../../components/navigation/link";
+import { Link } from "../../components/navigation/link";
 import { BottomPager } from "../../components/navigation/bottom-pager";
 
 function formatDate(s: string) {
@@ -44,9 +44,9 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
     totalCount: <>Members: {props.organisation.participants.totalCount}</>,
     createdAt: <>Created: {formatDate(props.organisation.createdAt)}</>,
     openAction: (
-      <TLink href={organisationLink()} target={"_blank"}>
-        <span className={"title"}>Manage</span>☜
-      </TLink>
+      <PureLink href={organisationLink()} target={"_blank"}>
+        <span>Manage</span>☜
+      </PureLink>
     )
   };
   return <OrganisationItemView {...viewProps} />;
@@ -122,7 +122,7 @@ const OrganisationIndexPage: NextPage<Props> = props => {
     <Layout>
       <PageHeading>
         <Styled.h1>
-          <BLink href={"/organisations"}>Organisations</BLink>
+          <Link href={"/organisations"}>Organisations</Link>
         </Styled.h1>
       </PageHeading>
       <SidebarGrid content={renderContent()} sidebar={<></>} />
