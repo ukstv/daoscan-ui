@@ -166,15 +166,17 @@ export const THEME = {
       fontFamily: "heading",
       fontWeight: "heading",
       lineHeight: "heading",
+      color: "gray.7",
       m: 0,
       mb: 1,
       fontSize: 5,
-      mt: 2
+      mt: 1.5
     },
     h3: {
       fontFamily: "heading",
-      fontWeight: "heading",
+      fontWeight: "bolder",
       lineHeight: "heading",
+      color: "gray.7",
       m: 0,
       mb: 1,
       fontSize: 4,

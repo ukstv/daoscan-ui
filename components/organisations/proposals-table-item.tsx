@@ -41,7 +41,7 @@ const Index = styled.div(
   css({
     flex: "1 1 auto",
     textAlign: "center",
-    minWidth: `${ACTIONABLE_WIDTH/2}rem`
+    minWidth: `${ACTIONABLE_WIDTH / 2}rem`
   })
 );
 
@@ -62,10 +62,10 @@ const ReferenceIconContainer = styled.div(
 
 const Actions = styled(Grid)(
   css({
-    borderTop: ['none', BORDERS.bevel],
+    borderTop: ["none", BORDERS.bevel],
     gridTemplateColumns: ["50% 50%"],
     gap: 0,
-    flex: '1 1 auto'
+    flex: "1 1 auto"
   })
 );
 
@@ -74,35 +74,44 @@ const CurrentState = styled.div(
     transform: "rotate(-90deg)",
     alignItems: "center",
     justifyContent: "center",
-    display: ['none', 'flex']
+    display: ["none", "flex"]
   })
 );
 
 const Votes = styled.div(
   css({
     borderLeft: BORDERS.bevel,
-    display: ['flex', 'flex'],
+    display: ["flex", "flex"],
     textAlign: "center",
-    flexDirection: ['row', 'column']
+    flexDirection: ["row", "column"]
   })
 );
 
-const PositiveVote = styled.div(css({
-  flex: '1 1 auto'
-}));
+const PositiveVote = styled.div(
+  css({
+    flex: "1 1 auto"
+  })
+);
 
-const NegativeVote = styled.div(css({
-  borderTop: ['none', BORDERS.bevel],
-  flex: '1 1 auto'
-}));
+const NegativeVote = styled.div(
+  css({
+    borderTop: ["none", BORDERS.bevel],
+    flex: "1 1 auto"
+  })
+);
 
-const Title = styled(Styled.h3)(css({
-  margin: 0
-}))
+const Title = styled(Styled.h3)(
+  css({
+    margin: 0,
+    marginTop: "0.2rem"
+  })
+);
 
-const InfoRow = styled(Styled.p)(css({
-  margin: 0
-}))
+const InfoRow = styled(Styled.p)(
+  css({
+    margin: "0.4rem 0"
+  })
+);
 
 function parseDescription(d: any) {
   if (typeof d === "string") {
@@ -117,7 +126,7 @@ export function ProposalsTableItem(props: { proposal: Proposal }) {
   const isGrantProposal =
     p.payload.tribute && p.payload.tribute.amount && new BigNumber(p.payload.tribute.amount).isZero();
   const Icon = isGrantProposal ? GrantIcon : UserIcon;
-  const description = parseDescription(p.payload.description)
+  const description = parseDescription(p.payload.description);
 
   return (
     <Container>
@@ -139,11 +148,16 @@ export function ProposalsTableItem(props: { proposal: Proposal }) {
       <div>
         <Title>{description?.title}</Title>
         <InfoRow>{description?.description}</InfoRow>
-        <InfoRow><strong>Applicant:</strong> <InlineProfile address={p.payload.applicant} /></InfoRow>
-        <InfoRow><strong>Proposer:</strong> <InlineProfile address={p.proposer} /></InfoRow>
+        <InfoRow>
+          <strong>Applicant:</strong> <InlineProfile address={p.payload.applicant} />
+        </InfoRow>
+        <InfoRow>
+          <strong>Proposer:</strong> <InlineProfile address={p.proposer} />
+        </InfoRow>
         <InfoRow>
           <strong>Requested:</strong> <TokenValue token={p.payload.sharesRequested} />
-          <span> </span><strong>Tribute:</strong> <TokenValue token={p.payload.tribute} />
+          <span> </span>
+          <strong>Tribute:</strong> <TokenValue token={p.payload.tribute} />
         </InfoRow>
       </div>
     </Container>

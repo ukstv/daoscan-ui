@@ -9,6 +9,8 @@ import {
 import { PageLayout } from "../../../components/organisations/page-layout";
 import { withApollo } from "../../../lib/apollo";
 import { ProposalsTable } from "../../../components/organisations/proposals-table";
+import { PageHeading } from "../../../components/layout/page-heading";
+import { Styled } from "theme-ui";
 
 export const Proposals: NextPage<{ address: string }> = props => {
   const router = useRouter();
@@ -27,6 +29,9 @@ export const Proposals: NextPage<{ address: string }> = props => {
     const platform = data.organisation.platform;
     return (
       <PageLayout organisation={data.organisation}>
+        <PageHeading>
+          <Styled.h2>Proposals</Styled.h2>
+        </PageHeading>
         <ProposalsTable proposals={proposals} platform={platform} />
       </PageLayout>
     );

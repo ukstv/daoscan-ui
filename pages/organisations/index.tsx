@@ -1,9 +1,9 @@
 import React from "react";
 import { Layout } from "../../components/layout/layout.component";
-import { Box, Flex, Link as TLink } from "@theme-ui/components";
+import { Box, Link as TLink } from "@theme-ui/components";
 import { Styled } from "theme-ui";
 import { useQuery } from "@apollo/react-hooks";
-import { ORGANISATIONS_QUERY, OrganisationsQuery, PageInfo } from "../../components/organisations/queries";
+import { ORGANISATIONS_QUERY, OrganisationsQuery } from "../../components/organisations/queries";
 import { withApollo } from "../../lib/apollo";
 import { PureOrganisationProps } from "../../components/organisations/props";
 import { SidebarGrid } from "../../components/layout/sidebar-grid";
