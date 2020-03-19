@@ -166,7 +166,7 @@ export interface OrganisationsQuery {
 
 export const ORGANISATIONS_QUERY = gql`
   query GetOrganisations($first: Int, $after: String, $last: Int, $before: String) {
-    organisations(first: $first, after: $after, last: $last, before: $before) {
+    organisations(page: { first: $first, after: $after, last: $last, before: $before }) {
       totalCount
       edges {
         node {
