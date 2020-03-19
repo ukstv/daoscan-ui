@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "../../components/layout/layout.component";
-import { Box, Flex, Grid, NavLink, Link as TLink } from "@theme-ui/components";
+import { Box, Flex, Link as TLink } from "@theme-ui/components";
 import { Styled } from "theme-ui";
 import { useQuery } from "@apollo/react-hooks";
 import { ORGANISATIONS_QUERY, OrganisationsQuery, PageInfo } from "../../components/organisations/queries";
@@ -17,6 +17,8 @@ import _ from "lodash";
 import { OrganisationItemView } from "../../components/organisations/organisation-item.view";
 import { PulseAnimation } from "../../components/placeholders/pulse.animation";
 import { PlaceholderRow } from "../../components/placeholders/placeholder-row";
+import { PageHeading } from "../../components/layout/page-heading";
+import { Link as BLink } from "../../components/navigation/link";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -164,15 +166,11 @@ const OrganisationIndexPage: NextPage<Props> = props => {
 
   return (
     <Layout>
-      <Grid>
-        <Box variant={"heading"}>
-          <Styled.h1>
-            <Link href={"/organisations"} passHref={true}>
-              <TLink>Organisations</TLink>
-            </Link>
-          </Styled.h1>
-        </Box>
-      </Grid>
+      <PageHeading>
+        <Styled.h1>
+          <BLink href={"/organisations"}>Organisations</BLink>
+        </Styled.h1>
+      </PageHeading>
       <SidebarGrid content={renderContent()} sidebar={<></>} />
     </Layout>
   );

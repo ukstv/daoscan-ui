@@ -12,7 +12,7 @@ interface Props {
 
 const Container = styled.div(
   css({
-    marginBottom: -1
+    marginBottom: '-1px'
   })
 );
 
