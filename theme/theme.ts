@@ -537,23 +537,6 @@ export const THEME = {
     }
   },
   links: {
-    pageNav: {
-      padding: 2,
-      fontWeight: "normal",
-      borderRight: "bevel",
-      "&:hover": {
-        color: "text",
-        bg: "yellow.6"
-      },
-      "&.active": {
-        color: "white",
-        backgroundColor: "yellow.7"
-      },
-      "&:hover.active": {
-        color: "white",
-        backgroundColor: "yellow.6"
-      }
-    },
     pager: {
       arrow: {
         display: "block",
