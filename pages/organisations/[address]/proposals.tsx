@@ -8,7 +8,7 @@ import {
 } from "../../../components/organisations/queries";
 import { PageLayout } from "../../../components/organisations/page-layout";
 import { withApollo } from "../../../lib/apollo";
-import { ProposalsTable } from "../../../components/organisations/proposals-table.component";
+import { ProposalsTable } from "../../../components/organisations/proposals-table";
 
 export const Proposals: NextPage<{ address: string }> = props => {
   const router = useRouter();

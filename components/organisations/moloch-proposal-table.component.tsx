@@ -181,13 +181,17 @@ function GrantProposalCard(props: { proposal: Proposal }) {
   );
 }
 
+// function ProposalCard(props: { proposal: Proposal }) {
+//   const p = props.proposal;
+//   if (p.payload.tribute && p.payload.tribute.amount && new BigNumber(p.payload.tribute.amount).isZero()) {
+//     return <GrantProposalCard proposal={props.proposal} />;
+//   } else {
+//     return <MembershipProposalCard proposal={props.proposal} />;
+//   }
+// }
+
 function ProposalCard(props: { proposal: Proposal }) {
-  const p = props.proposal;
-  if (p.payload.tribute && p.payload.tribute.amount && new BigNumber(p.payload.tribute.amount).isZero()) {
-    return <GrantProposalCard proposal={props.proposal} />;
-  } else {
-    return <MembershipProposalCard proposal={props.proposal} />;
-  }
+  return <p>Proposal #{props.proposal.index}</p>;
 }
 
 export function MolochProposalTable(props: Props) {

@@ -29,7 +29,7 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
       case PLATFORM.MOLOCH_1:
         return `//pokemol.com/dao/${props.organisation.address}`;
       case PLATFORM.ARAGON:
-        return `https://mainnet.aragon.org/#/${props.organisation.name}`;
+        return `//mainnet.aragon.org/#/${props.organisation.name}`;
       default:
         throw new UnreachableCaseError(props.organisation.platform);
     }
