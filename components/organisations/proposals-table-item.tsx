@@ -15,9 +15,9 @@ const Container = styled(Grid)(
   css({
     borderRadius: 0,
     boxShadow: "none",
-    borderBottom: BORDERS.bevel,
+    borderBottom: [BORDERS.bevelIntense, BORDERS.bevel],
     gridTemplateColumns: ["auto", `${ACTIONABLE_WIDTH}rem auto`],
-    gridGap: 2
+    gridGap: 2,
   })
 );
 

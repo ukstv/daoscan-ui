@@ -8,5 +8,6 @@ export const COLORS = {
   primaryHover: PALETTE.blue[6],
   muted: PALETTE.gray[3],
   bevel: PALETTE.gray[4],
+  bevelIntense: PALETTE.gray[5],
   placeholder: PALETTE.gray[3]
 };
