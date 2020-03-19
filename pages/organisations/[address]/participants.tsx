@@ -5,11 +5,11 @@ import { useQuery } from "@apollo/react-hooks";
 import {
   ORGANISATION_PARTICIPANTS_QUERY,
   OrganisationParticipantsQuery, Participant
-} from "../../../components/organisation-page/queries";
-import { OrganisationLayout } from "../../../components/organisation-page/layout.component";
+} from "../../../components/organisations/queries";
+import { OrganisationLayout } from "../../../components/organisations/organisation-layout";
 import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../../lib/apollo";
-import { ParticipantsTable } from "../../../components/organisation-page/participants-table.component";
+import { ParticipantsTable } from "../../../components/organisations/participants-table.component";
 
 export const Participants: NextPage<{ address: string }> = props => {
   const router = useRouter();

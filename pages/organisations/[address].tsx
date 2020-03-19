@@ -4,8 +4,8 @@ import { withApollo } from "../../lib/apollo";
 import { NextPage } from "next";
 import { useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
-import { OrganisationLayout } from "../../components/organisation-page/layout.component";
-import { ORGANISATION_QUERY, OrganisationQuery } from "../../components/organisation-page/queries";
+import { OrganisationLayout } from "../../components/organisations/organisation-layout";
+import { ORGANISATION_QUERY, OrganisationQuery } from "../../components/organisations/queries";
 
 export const OrganisationPage: NextPage<{ address: string }> = props => {
   const router = useRouter();
