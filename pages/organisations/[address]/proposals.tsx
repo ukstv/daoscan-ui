@@ -29,9 +29,6 @@ export const Proposals: NextPage<{ address: string }> = props => {
     const platform = data.organisation.platform;
     return (
       <PageLayout organisation={data.organisation}>
-        <PageHeading>
-          <Styled.h2>Proposals</Styled.h2>
-        </PageHeading>
         <ProposalsTable proposals={proposals} platform={platform} />
       </PageLayout>
     );
