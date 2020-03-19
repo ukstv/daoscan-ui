@@ -497,10 +497,6 @@ export const THEME = {
         }
       }
     },
-    heading: {
-      borderBottom: "bevel",
-      paddingLeft: 2
-    },
     description: {
       backgroundColor: "blue.7",
       padding: 2,

@@ -10,7 +10,6 @@ import { SidebarGrid } from "../../components/layout/sidebar-grid";
 import { OrganisationAvatar } from "../../components/organisation-avatar/organisation-avatar.component";
 import { DateTime } from "luxon";
 import { NextPage } from "next";
-import Link from "next/link";
 import { PLATFORM } from "../../lib/platform";
 import { UnreachableCaseError } from "../../lib/unreachable-case.error";
 import _ from "lodash";
@@ -19,6 +18,7 @@ import { PulseAnimation } from "../../components/placeholders/pulse.animation";
 import { PlaceholderRow } from "../../components/placeholders/placeholder-row";
 import { PageHeading } from "../../components/layout/page-heading";
 import { Link as BLink } from "../../components/navigation/link";
+import { BottomPager } from "../../components/navigation/bottom-pager";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -50,52 +50,6 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
     )
   };
   return <OrganisationItemView {...viewProps} />;
-}
-
-function BottomPager(props: { pageInfo: PageInfo; totalCount: number | undefined }) {
-  const renderNextLink = () => {
-    if (props.pageInfo.hasNextPage && props.pageInfo.endCursor) {
-      return (
-        <Link href={{ query: { after: props.pageInfo.endCursor } }} passHref={true}>
-          <TLink variant={"pager.arrow"}>＞</TLink>
-        </Link>
-      );
-    } else {
-      return <TLink variant={"pager.arrow.disabled"}>＞</TLink>;
-    }
-  };
-
-  const renderPreviousLink = () => {
-    if (props.pageInfo.hasPreviousPage && props.pageInfo.startCursor) {
-      return (
-        <Link href={{ query: { before: props.pageInfo.startCursor } }} passHref={true}>
-          <TLink variant={"pager.arrow"}>＜</TLink>
-        </Link>
-      );
-    } else {
-      return <TLink variant={"pager.arrow.disabled"}>＜</TLink>;
-    }
-  };
-
-  const renderPageNumber = () => {
-    if (props.totalCount) {
-      return (
-        <>
-          {props.pageInfo.startIndex}&thinsp;&ndash;&thinsp;{props.pageInfo.endIndex} of {props.totalCount}
-        </>
-      );
-    } else {
-      return <></>;
-    }
-  };
-
-  return (
-    <Flex variant={"pager.bottom"}>
-      <Box>{renderPreviousLink()}</Box>
-      <Box variant={"pager.pageNumber"}>{renderPageNumber()}</Box>
-      <Box>{renderNextLink()}</Box>
-    </Flex>
-  );
 }
 
 interface Props {
