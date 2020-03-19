@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { FormattedNumber } from "./stats/formatted-number";
+import { FormattedNumber } from "./formatted-number";
 
 export const IconImageSmall = styled.span`
   margin: 0 0.2rem 0 0;

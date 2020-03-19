@@ -5,7 +5,7 @@ import UserIcon from "../images/user.svg";
 import ShareIcon from "../images/share.svg";
 import BankIcon from "../images/bank.svg";
 import styled from "@emotion/styled";
-import { InlineStat } from "../inline-stat.component";
+import { InlineStat } from "../stats/inline-stat.component";
 import { BankItem, OrganisationProps, TokenValue } from "./props";
 import { css } from "theme-ui";
 import { BORDERS } from "../../theme/borders";
