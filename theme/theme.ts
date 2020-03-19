@@ -426,9 +426,6 @@ export const THEME = {
     }
   },
   grids: {
-    intraGrid: {
-      flex: "1 1 auto"
-    },
     organisations: {
       details: {
         gridTemplateColumns: "20rem max-content max-content",
@@ -507,16 +504,6 @@ export const THEME = {
     heading: {
       borderBottom: "bevel",
       paddingLeft: 2
-    },
-    intraGrid: {
-      flex: "1 1 auto",
-      content: {
-        flex: [2]
-      },
-      sidebar: {
-        flex: [1],
-        borderLeft: "bevel"
-      }
     },
     description: {
       backgroundColor: "blue.7",

@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { ORGANISATIONS_QUERY, OrganisationsQuery, PageInfo } from "../../components/organisation-page/queries";
 import { withApollo } from "../../lib/apollo";
 import { PureOrganisationProps } from "../../components/organisation-page/props";
-import { IntraGrid } from "../../styling/intra-grid";
+import { SidebarGrid } from "../../components/layout/sidebar-grid";
 import { OrganisationAvatar } from "../../components/organisation-avatar/organisation-avatar.component";
 import { DateTime } from "luxon";
 import { NextPage } from "next";
@@ -173,7 +173,7 @@ const OrganisationIndexPage: NextPage<Props> = props => {
           </Styled.h1>
         </Box>
       </Grid>
-      <IntraGrid content={renderContent()} sidebar={<></>} />
+      <SidebarGrid content={renderContent()} sidebar={<></>} />
     </Layout>
   );
 };
