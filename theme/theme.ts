@@ -453,10 +453,6 @@ export const THEME = {
         minWidth: "3rem",
         marginRight: 2
       },
-      item: {
-        borderBottom: "bevel",
-        padding: 2
-      },
       address: {
         fontFamily: "mono",
         wordWrap: "unset",

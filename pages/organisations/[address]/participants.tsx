@@ -6,7 +6,7 @@ import {
   ORGANISATION_PARTICIPANTS_QUERY,
   OrganisationParticipantsQuery, Participant
 } from "../../../components/organisations/queries";
-import { OrganisationLayout } from "../../../components/organisations/organisation-layout";
+import { PageLayout } from "../../../components/organisations/page-layout";
 import { Box, Grid } from "@theme-ui/components";
 import { withApollo } from "../../../lib/apollo";
 import { ParticipantsTable } from "../../../components/organisations/participants-table.component";
@@ -26,13 +26,13 @@ export const Participants: NextPage<{ address: string }> = props => {
   if (data) {
     const participants = data.participants.participants.edges.map(edge => edge.node);
     return (
-      <OrganisationLayout organisation={data.organisation}>
+      <PageLayout organisation={data.organisation}>
         <Grid>
           <Box>
             <ParticipantsTable participants={participants} />
           </Box>
         </Grid>
-      </OrganisationLayout>
+      </PageLayout>
     );
   } else {
     return <p>Loading...</p>;

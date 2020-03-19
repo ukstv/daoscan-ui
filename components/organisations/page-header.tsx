@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Grid } from "@theme-ui/components";
+import { Box, Flex } from "@theme-ui/components";
 import { OrganisationAvatar } from "../organisation-avatar/organisation-avatar.component";
 import UserIcon from "../images/user.svg";
 import ShareIcon from "../images/share.svg";
@@ -7,40 +7,63 @@ import BankIcon from "../images/bank.svg";
 import styled from "@emotion/styled";
 import { InlineStat } from "../inline-stat.component";
 import { BankItem, OrganisationProps, TokenValue } from "./props";
+import { css } from "theme-ui";
+import { BORDERS } from "../../theme/borders";
 
 interface Props {
   organisation: OrganisationProps;
 }
 
-const OrganisationTitle = styled.h2`
-  margin: 0;
-`;
+const Title = styled.h2(
+  css({
+    margin: 0
+  })
+);
 
-const OrganisationAddress = styled.h3`
-  margin: 0;
-  font-weight: normal;
-  font-size: 0.8rem;
-`;
+const Address = styled.h3(
+  css({
+    margin: 0,
+    fontWeight: "normal",
+    fontSize: "0.8rem"
+  })
+);
 
-const Stat = styled(InlineStat)`
-  margin: 10px;
-`;
+const Stat = styled(InlineStat)(
+  css({
+    margin: 2
+  })
+);
+
+const Container = styled(Flex)(
+  css({
+    borderBottom: BORDERS.bevel,
+    padding: 2
+  })
+);
+
+const AvatarContainer = styled.div(
+  css({
+    width: "4rem",
+    height: "4rem",
+    marginRight: 2
+  })
+);
 
 function bankValue(bank: BankItem[]): number {
   const usdValues = bank.map(b => Number(b.value.amount) / 10 ** b.value.decimals);
   return usdValues.reduce((acc, v) => acc + v, 0);
 }
 
-export function OrganisationHeader(props: Props) {
+export function PageHeader(props: Props) {
   return (
-    <Flex variant={"organisations.item"}>
-      <Box sx={{ width: "4rem", height: "4rem", marginRight: 2 }}>
+    <Container>
+      <AvatarContainer>
         <OrganisationAvatar address={props.organisation.address} platform={props.organisation.platform} />
-      </Box>
-      <Box>
-        <OrganisationTitle>{props.organisation.name}</OrganisationTitle>
-        <OrganisationAddress>{props.organisation.address}</OrganisationAddress>
-      </Box>
+      </AvatarContainer>
+      <div>
+        <Title>{props.organisation.name}</Title>
+        <Address>{props.organisation.address}</Address>
+      </div>
       <Box>
         <Stat number={props.organisation.participants.totalCount} icon={<UserIcon />} title={"Participants"} />
         <Stat
@@ -57,6 +80,6 @@ export function OrganisationHeader(props: Props) {
           title={"Bank Value"}
         />
       </Box>
-    </Flex>
+    </Container>
   );
 }

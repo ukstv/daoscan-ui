@@ -4,7 +4,7 @@ import { withApollo } from "../../lib/apollo";
 import { NextPage } from "next";
 import { useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
-import { OrganisationLayout } from "../../components/organisations/organisation-layout";
+import { PageLayout } from "../../components/organisations/page-layout";
 import { ORGANISATION_QUERY, OrganisationQuery } from "../../components/organisations/queries";
 
 export const OrganisationPage: NextPage<{ address: string }> = props => {
@@ -21,11 +21,11 @@ export const OrganisationPage: NextPage<{ address: string }> = props => {
 
   if (data) {
     return (
-      <OrganisationLayout organisation={data.organisation}>
+      <PageLayout organisation={data.organisation}>
         <Grid>
           <Box>Hello, {address}</Box>
         </Grid>
-      </OrganisationLayout>
+      </PageLayout>
     );
   } else {
     return <p>Loading...</p>;

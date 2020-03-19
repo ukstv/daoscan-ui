@@ -6,7 +6,7 @@ import {
   ORGANISATION_PROPOSALS_QUERY,
   OrganisationProposalsQuery
 } from "../../../components/organisations/queries";
-import { OrganisationLayout } from "../../../components/organisations/organisation-layout";
+import { PageLayout } from "../../../components/organisations/page-layout";
 import { withApollo } from "../../../lib/apollo";
 import { ProposalsTable } from "../../../components/organisations/proposals-table.component";
 
@@ -26,9 +26,9 @@ export const Proposals: NextPage<{ address: string }> = props => {
     const proposals = data.proposals.proposals;
     const platform = data.organisation.platform;
     return (
-      <OrganisationLayout organisation={data.organisation}>
+      <PageLayout organisation={data.organisation}>
         <ProposalsTable proposals={proposals} platform={platform} />
-      </OrganisationLayout>
+      </PageLayout>
     );
   } else {
     return <p>Loading...</p>;
