@@ -39,7 +39,7 @@ export const ORGANISATION_QUERY = gql`
 
 export const PARTICIPANTS_FRAGMENT = gql`
   fragment OrganisationParticipants on Organisation {
-    participants(first: 1000) {
+    participants(page: { first: 10000 }) {
       edges {
         node {
           address

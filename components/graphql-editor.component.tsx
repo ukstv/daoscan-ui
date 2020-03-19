@@ -27,7 +27,7 @@ const defaultQuery = `{
         ...TokenFragment
       }
       # All the participants, might take long
-      # participants(first: 100) {
+      # participants(page: {first: 100}) {
       #   edges {
       #     node {
       #       address
