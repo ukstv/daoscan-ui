@@ -6,6 +6,7 @@ import { ORGANISATION_PROPOSALS_QUERY, OrganisationProposalsQuery } from "../../
 import { PageLayout } from "../../../components/organisations/page-layout";
 import { withApollo } from "../../../lib/apollo";
 import { ProposalsTableItem } from "../../../components/organisations/proposals-table-item";
+import { BottomPager } from "../../../components/navigation/bottom-pager";
 
 export const Proposals: NextPage<{ address: string }> = props => {
   const router = useRouter();
@@ -23,7 +24,10 @@ export const Proposals: NextPage<{ address: string }> = props => {
     const items = data.proposals.proposals.edges.map(edge => {
       return <ProposalsTableItem proposal={edge.node} key={`proposal-${edge.cursor}`} />;
     });
-    return <PageLayout organisation={data.organisation}>{items}</PageLayout>;
+    return <PageLayout organisation={data.organisation}>
+      {items}
+      <BottomPager pageInfo={data.proposals.proposals.pageInfo} totalCount={data.proposals.proposals.totalCount} />
+    </PageLayout>;
   } else {
     return <p>Loading...</p>;
   }

@@ -20,11 +20,7 @@ import { PageHeading } from "../../components/layout/page-heading";
 import { Link } from "../../components/navigation/link";
 import { BottomPager } from "../../components/navigation/bottom-pager";
 import { DateSpan } from "../../components/organisations/date-span";
-
-function formatDate(s: string) {
-  const date = DateTime.fromISO(s);
-  return <span title={date.toISO()}>{date.toISODate()}</span>;
-}
+import { PaginationContext } from "../../lib/pagination-context";
 
 function OrganisationItem(props: { organisation: PureOrganisationProps }) {
   const organisationLink = () => {
@@ -58,19 +54,16 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
 }
 
 interface Props {
-  first: number | undefined;
-  after: string | undefined;
-  last: number | undefined;
-  before: string | undefined;
+  pagination: PaginationContext;
 }
 
 const OrganisationIndexPage: NextPage<Props> = props => {
   const { loading, error, data } = useQuery<OrganisationsQuery>(ORGANISATIONS_QUERY, {
     variables: {
-      first: props.first,
-      after: props.after,
-      last: props.last,
-      before: props.before
+      first: props.pagination.first,
+      after: props.pagination.after,
+      last: props.pagination.last,
+      before: props.pagination.before
     }
   });
 
@@ -136,11 +129,8 @@ const OrganisationIndexPage: NextPage<Props> = props => {
 };
 
 OrganisationIndexPage.getInitialProps = async context => {
-  const first = context.query.first ? Number(context.query.first) : undefined;
-  const after = context.query.after ? String(context.query.after) : undefined;
-  const last = context.query.last ? Number(context.query.last) : undefined;
-  const before = context.query.before ? String(context.query.before) : undefined;
-  return { first, after, last, before };
+  const pagination = PaginationContext.build(context);
+  return { pagination };
 };
 
 export default withApollo(OrganisationIndexPage);

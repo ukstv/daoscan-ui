@@ -10,6 +10,7 @@ import { InlineProfile } from "../profiles/inline-profile";
 import { TokenValue } from "../profiles/token-value";
 import { DateSpan } from "./date-span";
 import { DateTime } from "luxon";
+import { ProposalCurrentState } from "./proposal-current-state";
 
 const ACTIONABLE_WIDTH = 6;
 
@@ -68,15 +69,6 @@ const Actions = styled(Grid)(
     gridTemplateColumns: ["50% 50%"],
     gap: 0,
     flex: "1 1 auto"
-  })
-);
-
-const CurrentState = styled.div(
-  css({
-    transform: "rotate(-90deg)",
-    alignItems: "center",
-    justifyContent: "center",
-    display: ["none", "flex"]
   })
 );
 
@@ -140,7 +132,7 @@ export function ProposalsTableItem(props: { proposal: Proposal }) {
           </ReferenceIconContainer>
         </Reference>
         <Actions>
-          <CurrentState>Voting</CurrentState>
+          <ProposalCurrentState proposal={props.proposal} />
           <Votes>
             <PositiveVote>Yes</PositiveVote>
             <NegativeVote>No</NegativeVote>
