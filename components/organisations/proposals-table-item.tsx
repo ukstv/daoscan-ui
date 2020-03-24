@@ -8,6 +8,8 @@ import UserIcon from "../images/user.svg";
 import GrantIcon from "../images/grant.svg";
 import { InlineProfile } from "../profiles/inline-profile";
 import { TokenValue } from "../profiles/token-value";
+import { DateSpan } from "./date-span";
+import { DateTime } from "luxon";
 
 const ACTIONABLE_WIDTH = 6;
 
@@ -17,7 +19,7 @@ const Container = styled(Grid)(
     boxShadow: "none",
     borderBottom: [BORDERS.bevelIntense, BORDERS.bevel],
     gridTemplateColumns: ["auto", `${ACTIONABLE_WIDTH}rem auto`],
-    gridGap: 2,
+    gridGap: 2
   })
 );
 
@@ -158,6 +160,8 @@ export function ProposalsTableItem(props: { proposal: Proposal }) {
           <strong>Requested:</strong> <TokenValue token={p.payload.sharesRequested} />
           <span> </span>
           <strong>Tribute:</strong> <TokenValue token={p.payload.tribute} />
+          <span> </span>
+          <strong>Submitted:</strong> <DateSpan date={DateTime.fromISO(p.createdAt)} />
         </InfoRow>
       </div>
     </Container>

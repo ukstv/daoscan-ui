@@ -19,6 +19,7 @@ import { PlaceholderRow } from "../../components/placeholders/placeholder-row";
 import { PageHeading } from "../../components/layout/page-heading";
 import { Link } from "../../components/navigation/link";
 import { BottomPager } from "../../components/navigation/bottom-pager";
+import { DateSpan } from "../../components/organisations/date-span";
 
 function formatDate(s: string) {
   const date = DateTime.fromISO(s);
@@ -42,7 +43,11 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
     name: props.organisation.name,
     address: props.organisation.address,
     totalCount: <>Members: {props.organisation.participants.totalCount}</>,
-    createdAt: <>Created: {formatDate(props.organisation.createdAt)}</>,
+    createdAt: (
+      <>
+        Created: <DateSpan date={DateTime.fromISO(props.organisation.createdAt)} />
+      </>
+    ),
     openAction: (
       <PureLink href={organisationLink()} target={"_blank"}>
         <span>Manage</span>☜

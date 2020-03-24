@@ -2,20 +2,15 @@ import React from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
-import {
-  ORGANISATION_PROPOSALS_QUERY,
-  OrganisationProposalsQuery
-} from "../../../components/organisations/queries";
+import { ORGANISATION_PROPOSALS_QUERY, OrganisationProposalsQuery } from "../../../components/organisations/queries";
 import { PageLayout } from "../../../components/organisations/page-layout";
 import { withApollo } from "../../../lib/apollo";
-import { ProposalsTable } from "../../../components/organisations/proposals-table";
-import { PageHeading } from "../../../components/layout/page-heading";
-import { Styled } from "theme-ui";
+import { ProposalsTableItem } from "../../../components/organisations/proposals-table-item";
 
 export const Proposals: NextPage<{ address: string }> = props => {
   const router = useRouter();
   const address = (router.query.address as string | undefined) || props.address;
-  const { error, data } = useQuery<OrganisationProposalsQuery>(ORGANISATION_PROPOSALS_QUERY, {
+  const { error, data, loading } = useQuery<OrganisationProposalsQuery>(ORGANISATION_PROPOSALS_QUERY, {
     variables: { address: address }
   });
 
@@ -24,14 +19,11 @@ export const Proposals: NextPage<{ address: string }> = props => {
     return <p>Error</p>;
   }
 
-  if (data) {
-    const proposals = data.proposals.proposals;
-    const platform = data.organisation.platform;
-    return (
-      <PageLayout organisation={data.organisation}>
-        {/*<ProposalsTable proposals={proposals} platform={platform} />*/}
-      </PageLayout>
-    );
+  if (data && !loading) {
+    const items = data.proposals.proposals.edges.map(edge => {
+      return <ProposalsTableItem proposal={edge.node} key={`proposal-${edge.cursor}`} />;
+    });
+    return <PageLayout organisation={data.organisation}>{items}</PageLayout>;
   } else {
     return <p>Loading...</p>;
   }

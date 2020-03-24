@@ -134,21 +134,24 @@ export interface Proposal {
   proposer: string;
   payload: any;
   status: PROPOSAL_STATUS;
+  createdAt: string;
+}
+
+interface OrganisationProposalConnectionEdge {
+  node: Proposal;
+  cursor: string;
 }
 
 export interface OrganisationProposalConnection {
-  edges: {
-    node: Proposal
-    cursor: string
-  }
-  totalCount: number
-  pageInfo: PageInfo
+  edges: OrganisationProposalConnectionEdge[];
+  totalCount: number;
+  pageInfo: PageInfo;
 }
 
 export interface OrganisationProposalsQuery {
   organisation: OrganisationProps;
   proposals: {
-    proposals: OrganisationProposalConnection
+    proposals: OrganisationProposalConnection;
   };
 }
 
