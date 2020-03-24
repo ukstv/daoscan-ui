@@ -60,11 +60,25 @@ export const PARTICIPANTS_FRAGMENT = gql`
 export const ORGANISATION_PROPOSALS_FRAGMENT = gql`
   fragment OrganisationProposals on Organisation {
     proposals {
-      index
-      payload
-      proposer
-      payload
-      status
+      edges {
+        node {
+          createdAt
+          index
+          payload
+          proposer
+          status
+        }
+        cursor
+      }
+      totalCount
+      pageInfo {
+        startCursor
+        startIndex
+        endCursor
+        endIndex
+        hasNextPage
+        hasPreviousPage
+      }
     }
   }
 `;
@@ -122,10 +136,19 @@ export interface Proposal {
   status: PROPOSAL_STATUS;
 }
 
+export interface OrganisationProposalConnection {
+  edges: {
+    node: Proposal
+    cursor: string
+  }
+  totalCount: number
+  pageInfo: PageInfo
+}
+
 export interface OrganisationProposalsQuery {
   organisation: OrganisationProps;
   proposals: {
-    proposals: Proposal[];
+    proposals: OrganisationProposalConnection
   };
 }
 

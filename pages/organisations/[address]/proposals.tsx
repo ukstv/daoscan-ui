@@ -29,7 +29,7 @@ export const Proposals: NextPage<{ address: string }> = props => {
     const platform = data.organisation.platform;
     return (
       <PageLayout organisation={data.organisation}>
-        <ProposalsTable proposals={proposals} platform={platform} />
+        {/*<ProposalsTable proposals={proposals} platform={platform} />*/}
       </PageLayout>
     );
   } else {
