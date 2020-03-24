@@ -57,32 +57,6 @@ export const PARTICIPANTS_FRAGMENT = gql`
   }
 `;
 
-export const ORGANISATION_PROPOSALS_FRAGMENT = gql`
-  fragment OrganisationProposals on Organisation {
-    proposals {
-      edges {
-        node {
-          createdAt
-          index
-          payload
-          proposer
-          status
-        }
-        cursor
-      }
-      totalCount
-      pageInfo {
-        startCursor
-        startIndex
-        endCursor
-        endIndex
-        hasNextPage
-        hasPreviousPage
-      }
-    }
-  }
-`;
-
 export interface Participant {
   address: string;
   shares: {
@@ -156,16 +130,35 @@ export interface OrganisationProposalsQuery {
 }
 
 export const ORGANISATION_PROPOSALS_QUERY = gql`
-  query GetOrganisationProposals($address: String!) {
+  query GetOrganisationProposals($address: String!, $pageQuery: PageQuery) {
     organisation(address: $address) {
       ...OrganisationInfo
     }
     proposals: organisation(address: $address) {
-      ...OrganisationProposals
+      proposals(page: $pageQuery) {
+        edges {
+          node {
+            createdAt
+            index
+            payload
+            proposer
+            status
+          }
+          cursor
+        }
+        totalCount
+        pageInfo {
+          startCursor
+          startIndex
+          endCursor
+          endIndex
+          hasNextPage
+          hasPreviousPage
+        }
+      }
     }
   }
   ${ORGANISATION_FRAGMENT}
-  ${ORGANISATION_PROPOSALS_FRAGMENT}
 `;
 
 export interface OrganisationEdge {

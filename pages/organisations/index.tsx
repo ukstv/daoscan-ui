@@ -20,7 +20,7 @@ import { PageHeading } from "../../components/layout/page-heading";
 import { Link } from "../../components/navigation/link";
 import { BottomPager } from "../../components/navigation/bottom-pager";
 import { DateSpan } from "../../components/organisations/date-span";
-import { PaginationContext } from "../../lib/pagination-context";
+import { PageQuery } from "../../lib/page-query";
 
 function OrganisationItem(props: { organisation: PureOrganisationProps }) {
   const organisationLink = () => {
@@ -54,7 +54,7 @@ function OrganisationItem(props: { organisation: PureOrganisationProps }) {
 }
 
 interface Props {
-  pagination: PaginationContext;
+  pagination: PageQuery;
 }
 
 const OrganisationIndexPage: NextPage<Props> = props => {
@@ -129,7 +129,7 @@ const OrganisationIndexPage: NextPage<Props> = props => {
 };
 
 OrganisationIndexPage.getInitialProps = async context => {
-  const pagination = PaginationContext.build(context);
+  const pagination = PageQuery.fromContext(context);
   return { pagination };
 };
 

@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { css } from "theme-ui";
 import { BORDERS } from "../../theme/borders";
 import { Link } from "./link";
+import { useRouter } from "next/router";
 
 const Element = styled.div(
   css({
@@ -61,10 +62,23 @@ const ArrowLink = styled(Link)(
   })
 );
 
+function justPath(asPath: string) {
+  return decodeURIComponent(asPath).replace(/\?[\w\=]+/g, "");
+}
+
 export function BottomPager(props: { pageInfo: PageInfo; totalCount: number | undefined }) {
+  const router = useRouter();
+
   const renderNextLink = () => {
     if (props.pageInfo.hasNextPage && props.pageInfo.endCursor) {
-      return <ArrowLink href={{ query: { after: props.pageInfo.endCursor } }}>＞</ArrowLink>;
+      const query = { after: props.pageInfo.endCursor };
+      const href = { pathname: router.pathname, query };
+      const as = { pathname: justPath(router.asPath), query };
+      return (
+        <ArrowLink href={href} as={as}>
+          ＞
+        </ArrowLink>
+      );
     } else {
       return <DisabledLink>＞</DisabledLink>;
     }
@@ -72,7 +86,14 @@ export function BottomPager(props: { pageInfo: PageInfo; totalCount: number | un
 
   const renderPreviousLink = () => {
     if (props.pageInfo.hasPreviousPage && props.pageInfo.startCursor) {
-      return <ArrowLink href={{ query: { before: props.pageInfo.startCursor } }}>＜</ArrowLink>;
+      const query = { before: props.pageInfo.startCursor };
+      const href = { pathname: router.pathname, query };
+      const as = { pathname: justPath(router.asPath), query };
+      return (
+        <ArrowLink href={href} as={as}>
+          ＜
+        </ArrowLink>
+      );
     } else {
       return <DisabledLink>＜</DisabledLink>;
     }
@@ -86,7 +107,7 @@ export function BottomPager(props: { pageInfo: PageInfo; totalCount: number | un
         </PageNumberContainer>
       );
     } else {
-      return <PageNumberContainer/>;
+      return <PageNumberContainer />;
     }
   };
 
