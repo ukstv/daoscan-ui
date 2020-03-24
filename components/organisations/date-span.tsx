@@ -13,9 +13,9 @@ export function DateSpan(props: { date: DateTime }) {
   const renderDate = () => {
     switch (format) {
       case FORMAT.DATE:
-        return props.date.toUTC().toLocaleString(DateTime.DATE_SHORT);
+        return props.date.toUTC().toFormat("yyyy-MM-dd");
       case FORMAT.FULL:
-        return `${props.date.toUTC().toLocaleString(DateTime.DATETIME_SHORT)} UTC`;
+        return `${props.date.toUTC().toFormat("yyyy-MM-dd HH:mm")} UTC`;
       default:
         throw new UnreachableCaseError(format);
     }
