@@ -13,7 +13,7 @@ const Container = styled.div(
   })
 );
 
-export function ProposalCurrentState(props: { proposal: Proposal }) {
+export function ProposalCurrentState(props: { proposal: Proposal; className?: string }) {
   const renderLabel = () => {
     switch (props.proposal.status) {
       case PROPOSAL_STATUS.REJECT:
@@ -29,5 +29,5 @@ export function ProposalCurrentState(props: { proposal: Proposal }) {
     }
   };
 
-  return <Container>{renderLabel()}</Container>;
+  return <Container className={props.className}>{renderLabel()}</Container>;
 }

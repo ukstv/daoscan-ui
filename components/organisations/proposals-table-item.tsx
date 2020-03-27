@@ -1,5 +1,5 @@
 import React from "react";
-import { Proposal } from "./queries";
+import { Proposal, PROPOSAL_STATUS } from "./queries";
 import styled from "@emotion/styled";
 import { Box, css, Flex, Grid, Styled } from "theme-ui";
 import { BORDERS } from "../../theme/borders";
@@ -11,6 +11,7 @@ import { TokenValue } from "../profiles/token-value";
 import { DateSpan } from "./date-span";
 import { DateTime } from "luxon";
 import { ProposalCurrentState } from "./proposal-current-state";
+import { UnreachableCaseError } from "../../lib/unreachable-case.error";
 
 const ACTIONABLE_WIDTH = 6;
 
@@ -122,6 +123,21 @@ export function ProposalsTableItem(props: { proposal: Proposal }) {
   const Icon = isGrantProposal ? GrantIcon : UserIcon;
   const description = parseDescription(p.payload.description);
 
+  const actionsStyle = () => {
+    switch (props.proposal.status) {
+      case PROPOSAL_STATUS.ABORT:
+        return { bg: "red.3" };
+      case PROPOSAL_STATUS.ACTIVE:
+        return { bg: "orange.4" };
+      case PROPOSAL_STATUS.PASS:
+        return { bg: "green.3" };
+      case PROPOSAL_STATUS.REJECT:
+        return { bg: "red.3" };
+      default:
+        throw new UnreachableCaseError(props.proposal.status);
+    }
+  };
+
   return (
     <Container>
       <Actionable>
@@ -131,7 +147,7 @@ export function ProposalsTableItem(props: { proposal: Proposal }) {
             <Icon />
           </ReferenceIconContainer>
         </Reference>
-        <Actions>
+        <Actions sx={actionsStyle()}>
           <ProposalCurrentState proposal={props.proposal} />
           <Votes>
             <PositiveVote>Yes</PositiveVote>
