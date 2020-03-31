@@ -111,8 +111,19 @@ export interface Proposal {
   createdAt: string;
 }
 
+export interface ProposalStats {
+  yesShares: { amount: string; decimals: number };
+  noShares: { amount: string; decimals: number };
+  yesVotes: number;
+  noVotes: number;
+}
+
+export interface ProposalWithStats extends Proposal {
+  stats: ProposalStats;
+}
+
 interface OrganisationProposalConnectionEdge {
-  node: Proposal;
+  node: ProposalWithStats;
   cursor: string;
 }
 
@@ -138,6 +149,18 @@ export const ORGANISATION_PROPOSALS_QUERY = gql`
       proposals(page: $pageQuery) {
         edges {
           node {
+            stats {
+              yesShares {
+                amount
+                decimals
+              }
+              noShares {
+                amount
+                decimals
+              }
+              yesVotes
+              noVotes
+            }
             createdAt
             index
             payload

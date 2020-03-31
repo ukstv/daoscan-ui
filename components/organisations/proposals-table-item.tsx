@@ -1,5 +1,5 @@
 import React from "react";
-import { Proposal, PROPOSAL_STATUS } from "./queries";
+import { Proposal, PROPOSAL_STATUS, ProposalWithStats } from "./queries";
 import styled from "@emotion/styled";
 import { Box, css, Flex, Grid, Styled } from "theme-ui";
 import { BORDERS } from "../../theme/borders";
@@ -116,7 +116,16 @@ function parseDescription(d: any) {
   }
 }
 
-export function ProposalsTableItem(props: { proposal: Proposal }) {
+function VoteShares(props: { number: { decimals: number; amount: string } }) {
+  const real = new BigNumber(props.number.amount).div(10 ** props.number.decimals).toFixed(0);
+  return (
+    <div>
+      <small>{real}</small>
+    </div>
+  );
+}
+
+export function ProposalsTableItem(props: { proposal: ProposalWithStats }) {
   const p = props.proposal;
   const isGrantProposal =
     p.payload.tribute && p.payload.tribute.amount && new BigNumber(p.payload.tribute.amount).isZero();
@@ -150,8 +159,14 @@ export function ProposalsTableItem(props: { proposal: Proposal }) {
         <Actions sx={actionsStyle()}>
           <ProposalCurrentState proposal={props.proposal} />
           <Votes>
-            <PositiveVote>Yes</PositiveVote>
-            <NegativeVote>No</NegativeVote>
+            <PositiveVote>
+              Yes
+              <VoteShares number={props.proposal.stats.yesShares} />
+            </PositiveVote>
+            <NegativeVote>
+              No
+              <VoteShares number={props.proposal.stats.noShares} />
+            </NegativeVote>
           </Votes>
         </Actions>
       </Actionable>
