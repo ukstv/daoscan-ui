@@ -1,7 +1,7 @@
 import React from "react";
-import { Proposal, PROPOSAL_STATUS, ProposalWithStats } from "./queries";
+import { PROPOSAL_STATUS, ProposalWithStats } from "./queries";
 import styled from "@emotion/styled";
-import { Box, css, Flex, Grid, Styled } from "theme-ui";
+import { css, Grid, Styled } from "theme-ui";
 import { BORDERS } from "../../theme/borders";
 import BigNumber from "bignumber.js";
 import UserIcon from "../images/user.svg";
@@ -12,6 +12,7 @@ import { DateSpan } from "./date-span";
 import { DateTime } from "luxon";
 import { ProposalCurrentState } from "./proposal-current-state";
 import { UnreachableCaseError } from "../../lib/unreachable-case.error";
+import Linkify from "react-linkify";
 
 const ACTIONABLE_WIDTH = 6;
 
@@ -135,15 +136,28 @@ export function ProposalsTableItem(props: { proposal: ProposalWithStats }) {
   const actionsStyle = () => {
     switch (props.proposal.status) {
       case PROPOSAL_STATUS.ABORT:
-        return { bg: "red.3" };
+        return { color: "red.3" };
       case PROPOSAL_STATUS.ACTIVE:
-        return { bg: "orange.4" };
+        return { color: "orange.4" };
       case PROPOSAL_STATUS.PASS:
-        return { bg: "green.3" };
+        return { color: "green.6" };
       case PROPOSAL_STATUS.REJECT:
-        return { bg: "red.3" };
+        return { color: "red.5" };
       default:
         throw new UnreachableCaseError(props.proposal.status);
+    }
+  };
+
+  const renderTribute = () => {
+    if (isGrantProposal) {
+      return <></>;
+    } else {
+      return (
+        <>
+          <strong>Tribute:</strong> <TokenValue token={p.payload.tribute} />
+          <span> </span>
+        </>
+      );
     }
   };
 
@@ -172,7 +186,9 @@ export function ProposalsTableItem(props: { proposal: ProposalWithStats }) {
       </Actionable>
       <div>
         <Title>{description?.title}</Title>
-        <InfoRow>{description?.description}</InfoRow>
+        <InfoRow>
+          <Linkify>{description?.description}</Linkify>
+        </InfoRow>
         <InfoRow>
           <strong>Applicant:</strong> <InlineProfile address={p.payload.applicant} />
         </InfoRow>
@@ -182,8 +198,7 @@ export function ProposalsTableItem(props: { proposal: ProposalWithStats }) {
         <InfoRow>
           <strong>Requested:</strong> <TokenValue token={p.payload.sharesRequested} />
           <span> </span>
-          <strong>Tribute:</strong> <TokenValue token={p.payload.tribute} />
-          <span> </span>
+          {renderTribute()}
           <strong>Submitted:</strong> <DateSpan date={DateTime.fromISO(p.createdAt)} />
         </InfoRow>
       </div>
